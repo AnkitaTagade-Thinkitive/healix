@@ -16,6 +16,25 @@
   }
 }
 
+// =============================================
+// Layered overlap for dark legal/sitemap pages.
+// ---------------------------------------------
+// On these pages we want the footer to sit slightly on top of the page
+// so the rounded top corners reveal a sliver of the dark page bg behind
+// them — gives a premium layered transition with no white gap.
+// Scoped via :has() so other (cream-themed) pages are unaffected.
+// =============================================
+.main-content:has(.terms-page, .privacy-page, .tc-page, .chd-page, .sitemap-page)
+  ~ .footer {
+  position: relative;
+  z-index: 2;
+  margin-top: -32px;
+
+  @include tablet-up {
+    margin-top: -40px;
+  }
+}
+
 .footer__inner {
   max-width: 1920px;
   margin: 0 auto;

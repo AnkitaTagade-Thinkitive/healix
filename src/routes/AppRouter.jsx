@@ -38,6 +38,11 @@ const ForgotPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'))
 const ResetPasswordPage = lazy(() => import('@/pages/ResetPasswordPage'))
 const OAuthSuccessPage = lazy(() => import('@/pages/OAuthSuccessPage'))
 const OAuthFailurePage = lazy(() => import('@/pages/OAuthFailurePage'))
+const SitemapPage = lazy(() => import('@/pages/SitemapPage'))
+const TermsPage = lazy(() => import('@/pages/TermsPage'))
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'))
+const TelehealthConsentPage = lazy(() => import('@/pages/TelehealthConsentPage'))
+const ConsumerHealthDataPage = lazy(() => import('@/pages/ConsumerHealthDataPage'))
 
 // Lightweight transitional fallback — intentionally unstyled and tiny so it
 // adds no extra render cost. The Suspense boundary swaps it out the instant
@@ -74,6 +79,11 @@ const AppRouter = () => {
               <Route path="/membership" element={<MembershipPage />} />
               <Route path="/faqs" element={<FaqPage />} />
               <Route path="/science" element={<SciencePage />} />
+              <Route path="/sitemap" element={<SitemapPage />} />
+              <Route path="/terms-and-conditions" element={<TermsPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPage />} />
+              <Route path="/telehealth-consent" element={<TelehealthConsentPage />} />
+              <Route path="/consumer-health-data-policy" element={<ConsumerHealthDataPage />} />
               <Route
                 path="/dashboard"
                 element={(

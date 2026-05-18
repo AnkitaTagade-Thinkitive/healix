@@ -74,11 +74,11 @@ const navSections = [
 ]
 
 const legalLinks = [
-  { label: 'Terms & conditions', href: '#' },
-  { label: 'Privacy policy', href: '#' },
-  { label: 'Sitemap', href: '#' },
-  { label: 'Telehealth Consent & Open Payments', href: '#' },
-  { label: 'Consumer Health Data Privacy Policy', href: '#' },
+  { label: 'Terms & conditions', href: '/terms-and-conditions' },
+  { label: 'Privacy policy', href: '/privacy-policy' },
+  { label: 'Sitemap', href: '/sitemap' },
+  { label: 'Telehealth Consent & Open Payments', href: '/telehealth-consent' },
+  { label: 'Consumer Health Data Privacy Policy', href: '/consumer-health-data-policy' },
 ]
 
 // Desktop groups: columns combine sections

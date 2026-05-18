@@ -20,6 +20,26 @@ body {
   color: $color-dark;
 }
 
+// =============================================
+// App layout — classic "sticky footer" pattern.
+// ---------------------------------------------
+// `.app-layout` is the top-level flex column. `.main-content` is set
+// to grow into remaining vertical space so the <Footer/> always stays
+// at the bottom of the viewport — even on pages whose content is
+// shorter than the viewport (legal pages on tall screens, error
+// states, etc). Sticky elements (navbar, sidebars) continue to work
+// because flex doesn't establish a new scroll container.
+// =============================================
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
 // Utility: screen-reader only
 .sr-only {
   position: absolute;
