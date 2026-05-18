@@ -12,9 +12,11 @@ const MemSoftFooter = () => {
         <div className="mem-sf__content">
           <div className="mem-sf__top-text">
             <h2 className="mem-sf__heading-top">This time</h2>
-            <h2 className="mem-sf__heading-bottom">you have Healix</h2>
           </div>
-          <button className="mem-sf__btn" aria-disabled="true">Start your weight loss journey</button>
+          <div className="mem-sf__cta-group">
+            <h2 className="mem-sf__heading-bottom">you have Healix</h2>
+            <button className="mem-sf__btn" aria-disabled="true">Start your weight loss journey</button>
+          </div>
         </div>
       </div>
     </section>

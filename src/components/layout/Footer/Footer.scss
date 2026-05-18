@@ -530,6 +530,22 @@ $footer-tile-h: clamp(54px, 5.4vw, 68px);
   margin-top: 40px;
   text-align: center;
 
+  // Cancel `.footer__inner`'s horizontal padding so the oversized
+  // wordmark can span the full inner width without getting clipped.
+  // Mirrors the breakpoints used on the parent.
+  margin-left: -$spacing-xl;
+  margin-right: -$spacing-xl;
+
+  @include tablet-up {
+    margin-left: -$spacing-2xl;
+    margin-right: -$spacing-2xl;
+  }
+
+  @media (min-width: 1300px) {
+    margin-left: -90px;
+    margin-right: -90px;
+  }
+
   @media (max-width: 599px) {
     margin-top: 24px;
   }

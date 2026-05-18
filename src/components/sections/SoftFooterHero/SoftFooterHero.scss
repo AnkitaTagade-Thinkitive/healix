@@ -70,6 +70,16 @@
   text-align: center;
 }
 
+// "you have Healix" + CTA grouped as the main heading block,
+// separated from the top heading via the content's space-between.
+.soft-footer__cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  text-align: center;
+}
+
 .soft-footer__heading-top {
   font-family: $font-primary;
   font-size: clamp(28px, 5vw, 56px);

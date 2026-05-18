@@ -70,6 +70,16 @@
   text-align: center;
 }
 
+// "you have Healix" + CTA grouped as the main heading block,
+// separated from the top heading via the content's space-between.
+.mem-sf__cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  text-align: center;
+}
+
 .mem-sf__heading-top {
   font-family: $font-primary;
   font-size: clamp(28px, 5vw, 56px);
@@ -84,7 +94,7 @@
   font-family: $font-primary;
   font-size: clamp(28px, 5vw, 56px);
   font-weight: $font-weight-bold;
-  color: #1A362D;
+  color: #f7f5f0;
   line-height: 1.15;
   margin: 0;
   letter-spacing: -0.02em;

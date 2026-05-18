@@ -17,9 +17,11 @@ const SoftFooterHero = () => {
         <div className="soft-footer__content">
           <div className="soft-footer__top-text">
             <h2 className="soft-footer__heading-top">This time</h2>
-            <h2 className="soft-footer__heading-bottom">you have Healix</h2>
           </div>
-          <button className="soft-footer__btn" aria-disabled="true">Start your weight loss journey</button>
+          <div className="soft-footer__cta-group">
+            <h2 className="soft-footer__heading-bottom">you have Healix</h2>
+            <button className="soft-footer__btn" aria-disabled="true">Start your weight loss journey</button>
+          </div>
         </div>
       </div>
     </section>
