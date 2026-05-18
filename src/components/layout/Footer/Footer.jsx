@@ -151,7 +151,17 @@ const Footer = () => {
                 <div className="footer__card-store">
                   <span className="footer__card-store-text">Download<br />the app</span>
                 </div>
-                <div className="footer__card-qr" />
+                <div className="footer__card-qr">
+                  <img
+                    src="/images/healix_qr_code.webp"
+                    alt="Healix App QR Code"
+                    className="footer__card-qr-img"
+                    width="68"
+                    height="68"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </div>
               <p className="footer__card-caption">For iOS and Android</p>
             </div>
@@ -175,7 +185,17 @@ const Footer = () => {
                 <div className="footer__card-store">
                   <span className="footer__card-store-text">Download<br />the app</span>
                 </div>
-                <div className="footer__card-qr" />
+                <div className="footer__card-qr">
+                  <img
+                    src="/images/healix_qr_code.webp"
+                    alt="Healix App QR Code"
+                    className="footer__card-qr-img"
+                    width="68"
+                    height="68"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </div>
               <p className="footer__card-caption">For iOS and Android</p>
             </div>
@@ -272,7 +292,7 @@ const Footer = () => {
         {/* Watermark */}
         <div className="footer__watermark-wrap">
           <span className="footer__watermark" aria-hidden="true">
-            he<span className="footer__watermark-accent">a</span>lix
+            he<span className="footer__watermark-accent">a</span>li<span className="footer__watermark-x">x</span>
           </span>
         </div>
       </div>

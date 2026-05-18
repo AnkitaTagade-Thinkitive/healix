@@ -103,33 +103,63 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px; // a touch more breathing room next to the QR
   margin-bottom: 8px;
 }
 
+// Shared sizing for the two tiles in `.footer__card-download` so the
+// "Download the app" pill and the QR square always line up at the same
+// height. Adjust the clamp here to scale both tiles in lockstep.
+$footer-tile-h: clamp(54px, 5.4vw, 68px);
+
 .footer__card-store {
+  height: $footer-tile-h;
+  padding: 0 clamp(14px, 1.6vw, 20px);
   background: #fff;
-  border-radius: 6px;
-  padding: clamp(5px, 0.8vw, 7px) clamp(8px, 1.2vw, 12px);
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .footer__card-store-text {
   font-family: $font-primary;
-  font-size: 9px;
+  font-size: clamp(11px, 1.1vw, 13px);
   font-weight: $font-weight-semibold;
   color: #000;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .footer__card-qr {
-  width: clamp(36px, 4vw, 46px);
-  height: clamp(36px, 4vw, 46px);
+  // Same height as the store pill, square via explicit width = height
+  // (clearer than aspect-ratio for a non-flex box and immune to any
+  // height-collapse from flex children).
+  height: $footer-tile-h;
+  width: $footer-tile-h;
   background: #fff;
-  border-radius: 6px;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.25);
 }
+
+.footer__card-qr-img {
+  // `contain` keeps the QR readable at every container size — no
+  // stretching, no cropping. The padding above gives the QR a quiet
+  // border the same way printed QR codes get framed.
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  // QR codes don't need image smoothing; pixel-snap keeps fine detail
+  // crisp at small sizes.
+  image-rendering: pixelated;
+}
+
 
 .footer__card-caption {
   font-family: $font-primary;
@@ -512,7 +542,12 @@
   font-weight: 700;
   color: rgba(255, 255, 255, 0.14);
   line-height: 1;
-  letter-spacing: -0.04em;
+  // Was -0.04em — too tight at this size; serifs were overlapping
+  // (a→l, i→x). Slight negative + native kerning keeps the wordmark
+  // feel without letter collisions.
+  letter-spacing: -0.005em;
+  font-kerning: normal;
+  font-feature-settings: 'kern' 1;
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
@@ -525,4 +560,12 @@
 
 .footer__watermark-accent {
   color: rgba(53, 122, 100, 0.6);
+  // Tiny breathing room on the right so the bowl of `a` clears the
+  // stem of `l`.
+  margin-right: 0.015em;
+}
+
+// `x` diagonals can crash into `i` at large sizes — small nudge fixes it.
+.footer__watermark-x {
+  margin-left: 0.02em;
 }

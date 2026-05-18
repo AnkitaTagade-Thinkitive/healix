@@ -260,11 +260,80 @@
 .dash__plans {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
+  align-items: stretch; // equal-height cards across the row
 
-  @media (min-width: 768px) {
+  @media (min-width: 980px) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (min-width: 768px) and (max-width: 979px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// =============================================================================
+// Premium section wrapper for the dashboard plans block.
+// Provides the eyebrow / title / subtitle hierarchy + soft gradient
+// surface that mirrors the onboarding results page.
+// =============================================================================
+.dash-plans-section {
+  position: relative;
+  margin-bottom: 28px;
+  padding: 28px 22px;
+  background:
+    radial-gradient(70% 60% at 50% 0%, rgba(250, 234, 172, 0.32) 0%, rgba(250, 234, 172, 0) 60%),
+    linear-gradient(180deg, #F7F5F0 0%, #ffffff 70%);
+  border: 1px solid rgba(26, 54, 45, 0.06);
+  border-radius: 24px;
+
+  @media (min-width: 768px) {
+    padding: 32px 28px;
+  }
+}
+
+.dash-plans-section__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+}
+
+.dash-plans-section__eyebrow {
+  display: inline-block;
+  padding: 6px 14px;
+  font-family: $font-primary;
+  font-size: 11px;
+  font-weight: 600;
+  color: #244236;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  background: rgba(36, 66, 54, 0.08);
+  border-radius: 999px;
+}
+
+.dash-plans-section__title {
+  margin: 4px 0 0;
+  font-family: $font-primary;
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 700;
+  color: #1A362D;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.dash-plans-section__subtitle {
+  margin: 0;
+  max-width: 520px;
+  font-family: $font-primary;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 1.55;
 }
 
 .dash-plan {

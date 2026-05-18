@@ -1,9 +1,13 @@
 import { useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Heart, Pill, Sparkles } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import HealthSummaryCard from '@/components/dashboard/HealthSummaryCard'
 import ProgressTracker from '@/components/dashboard/ProgressTracker'
-import PlanCard from '@/components/dashboard/PlanCard'
+// The legacy <PlanCard> is intentionally retired here in favour of the
+// shared premium card. PlanCard.jsx is still exported but no longer used
+// by the dashboard.
+import PlanComparisonCard from '@/components/common/PlanComparisonCard/PlanComparisonCard'
 import DailyTasks from '@/components/dashboard/DailyTasks'
 import DeleteAccount from '@/components/dashboard/DeleteAccount'
 import WelcomeBanner from '@/components/dashboard/WelcomeBanner'
@@ -124,10 +128,53 @@ const DashboardPage = () => {
     trackersRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  // Shape matches PlanComparisonCard's expected `plan` prop. Same
+  // catalogue as the onboarding results page so the two surfaces stay
+  // visually consistent. Move this to `src/lib/plans.js` if you ever
+  // need a third surface (Settings, Profile, etc.).
   const plans = [
-    { id: 'lifestyle',  title: 'Lifestyle Plan',  description: 'Habit coaching, nutrition, and activity guidance to reach your goals.' },
-    { id: 'medication', title: 'Medication Plan', description: 'Clinically reviewed prescriptions shipped monthly, with provider support.' },
-    { id: 'combined',   title: 'Combined Plan',   description: 'Medication plus lifestyle coaching for the best outcomes.' },
+    {
+      id: 'lifestyle',
+      title: 'Lifestyle Plan',
+      blurb: 'Habit coaching, nutrition, and activity guidance to reach your goals.',
+      price: 'From $29',
+      pricePeriod: '/month',
+      icon: Heart,
+      features: [
+        'Personalised habit coaching',
+        'Nutrition + meal guidance',
+        'Weekly progress check-ins',
+        'In-app expert support',
+      ],
+    },
+    {
+      id: 'medication',
+      title: 'Medication Plan',
+      blurb: 'Clinically reviewed prescriptions shipped monthly, with provider support.',
+      price: 'From $249',
+      pricePeriod: '/month',
+      icon: Pill,
+      features: [
+        'Provider-reviewed Rx',
+        'Free monthly shipping',
+        'Async messaging with care team',
+        'Refill auto-pilot',
+      ],
+    },
+    {
+      id: 'combined',
+      title: 'Combined Plan',
+      blurb: 'Medication plus lifestyle coaching for the best outcomes.',
+      price: 'From $279',
+      pricePeriod: '/month',
+      icon: Sparkles,
+      features: [
+        'Everything in the Medication Plan',
+        'Plus full habit + nutrition coaching',
+        'Twice-monthly video check-ins',
+        'Priority care team access',
+      ],
+    },
   ]
 
   // Skeleton ONLY on the very first load (when there's no data yet).
@@ -274,18 +321,28 @@ const DashboardPage = () => {
           </section>
         )}
 
-        {/* ── Plans (always available, derived from assessment) ──── */}
+        {/* ── Plans (derived from assessment) ────────────────────── */}
         {assessmentCompleted && (
-          <section>
-            <h2 className="dash__section-title">Your plan</h2>
+          <section className="dash-plans-section" aria-labelledby="dash-plans-heading">
+            <header className="dash-plans-section__head">
+              <span className="dash-plans-section__eyebrow">Your personalised plan</span>
+              <h2 id="dash-plans-heading" className="dash-plans-section__title">
+                Pick the plan that fits your goal
+              </h2>
+              <p className="dash-plans-section__subtitle">
+                Based on your assessment, we&rsquo;ve highlighted the option most likely to help.
+                You can switch any time.
+              </p>
+            </header>
+
             <div className="dash__plans">
-              {plans.map((p) => (
-                <PlanCard
+              {plans.map((p, index) => (
+                <PlanComparisonCard
                   key={p.id}
-                  title={p.title}
-                  description={p.description}
+                  plan={p}
                   recommended={recommended === p.id}
-                  onView={() => { /* TODO: navigate to plan detail */ }}
+                  index={index}
+                  onSelect={() => { /* TODO: navigate to plan detail */ }}
                 />
               ))}
             </div>

@@ -1,7 +1,15 @@
+import { useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { Heart, Pill, Sparkles, ChevronLeft, RotateCcw } from 'lucide-react'
+import BmiResultCard from '@/components/onboarding/BmiResultCard'
+import PlanComparisonCard from '@/components/common/PlanComparisonCard/PlanComparisonCard'
 import './OnboardingResultPage.scss'
 
-// BMI helpers
+// ─────────────────────────────────────────────────────────────────
+// Helpers — same recommendation logic as before, untouched.
+// ─────────────────────────────────────────────────────────────────
+
 const computeBmi = (heightCm, weightKg) => {
   const h = Number(heightCm)
   const w = Number(weightKg)
@@ -10,125 +18,187 @@ const computeBmi = (heightCm, weightKg) => {
   return +(w / (m * m)).toFixed(1)
 }
 
-const bmiCategory = (bmi) => {
-  if (bmi == null) return { label: 'N/A', tone: 'neutral' }
-  if (bmi < 18.5) return { label: 'Underweight', tone: 'low' }
-  if (bmi < 25) return { label: 'Healthy', tone: 'good' }
-  if (bmi < 30) return { label: 'Overweight', tone: 'warn' }
-  return { label: 'Obese', tone: 'alert' }
-}
-
 const recommendationFor = (bmi, answers) => {
-  if (bmi == null) return 'Based on your answers, we recommend a tailored lifestyle program with provider support.'
+  if (bmi == null) {
+    return 'Based on your answers, we recommend a tailored lifestyle program with provider support.'
+  }
   if (bmi < 25) {
-    return 'You\u2019re in a healthy BMI range. A lifestyle plan should help you maintain and feel your best.'
+    return 'You’re in a healthy BMI range. A lifestyle plan should help you maintain and feel your best.'
   }
   if (bmi < 30) {
     return 'You may benefit from lifestyle changes alongside clinical support to reach your goal.'
   }
-  // Obese
   if (answers?.openToTreatment === 'no') {
     return 'A structured lifestyle plan with close provider guidance is the right place to start.'
   }
   return 'A combined plan with medication and lifestyle support typically produces the best outcomes.'
 }
 
-const plans = [
+const pickPlan = (bmi, answers) => {
+  if (bmi == null) return 'lifestyle'
+  if (bmi < 25) return 'lifestyle'
+  if (answers?.openToTreatment === 'no') return 'lifestyle'
+  if (bmi >= 30) return 'combined'
+  return 'medication'
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Plan catalogue — single source of truth on this page. Each card
+// gets an icon, a price + period, and 3-4 feature bullets so the
+// cards have real content rather than just a blurb.
+// ─────────────────────────────────────────────────────────────────
+
+const PLANS = [
   {
     id: 'lifestyle',
     title: 'Lifestyle Plan',
-    blurb: 'Habit coaching, nutrition guidance, and progress tracking.',
-    price: 'From $29/mo',
+    blurb: 'Habit coaching, nutrition guidance, and daily progress tracking.',
+    price: 'From $29',
+    pricePeriod: '/month',
+    icon: Heart,
+    features: [
+      'Personalised habit coaching',
+      'Nutrition + meal guidance',
+      'Weekly progress check-ins',
+      'In-app expert support',
+    ],
   },
   {
     id: 'medication',
     title: 'Medication Plan',
-    blurb: 'Clinically reviewed prescriptions shipped to your door.',
-    price: 'From $249/mo',
+    blurb: 'Clinically reviewed prescriptions delivered to your door.',
+    price: 'From $249',
+    pricePeriod: '/month',
+    icon: Pill,
+    features: [
+      'Provider-reviewed Rx',
+      'Free monthly shipping',
+      'Async messaging with care team',
+      'Refill auto-pilot',
+    ],
   },
   {
     id: 'combined',
     title: 'Combined Plan',
     blurb: 'Medication plus lifestyle coaching for the best outcomes.',
-    price: 'From $279/mo',
+    price: 'From $279',
+    pricePeriod: '/month',
+    icon: Sparkles,
+    features: [
+      'Everything in the Medication Plan',
+      'Plus full habit + nutrition coaching',
+      'Twice-monthly video check-ins',
+      'Priority care team access',
+    ],
   },
 ]
+
+// ─────────────────────────────────────────────────────────────────
+// Page
+// ─────────────────────────────────────────────────────────────────
 
 const OnboardingResultPage = () => {
   const { state } = useLocation()
   const navigate = useNavigate()
 
   // Prefer navigated state, fall back to localStorage so refresh still works.
-  let answers = state?.answers
-  if (!answers) {
+  // Wrapped in useMemo so the values don't reparse on every render.
+  const answers = useMemo(() => {
+    if (state?.answers) return state.answers
     try {
-      answers = JSON.parse(localStorage.getItem('healix_assessment') || '{}')
+      const raw = localStorage.getItem('healix_assessment')
+      if (!raw) return {}
+      const parsed = JSON.parse(raw)
+      // Handle both shapes the app has used historically:
+      //   - { answers: {...}, step, completedAt }   (current)
+      //   - {...answers}                            (legacy)
+      return parsed?.answers || parsed || {}
     } catch {
-      answers = {}
+      return {}
     }
-  }
+  }, [state?.answers])
 
-  const bmi = computeBmi(answers.height, answers.weight)
-  const cat = bmiCategory(bmi)
-  const recommendation = recommendationFor(bmi, answers)
+  const bmi = useMemo(
+    () => computeBmi(answers.height, answers.weight),
+    [answers.height, answers.weight]
+  )
 
-  // Highlight the plan most relevant to the BMI + preferences.
-  const recommendedPlanId = (() => {
-    if (bmi == null) return 'lifestyle'
-    if (bmi < 25) return 'lifestyle'
-    if (answers.openToTreatment === 'no') return 'lifestyle'
-    if (bmi >= 30) return 'combined'
-    return 'medication'
-  })()
+  const recommendation = useMemo(
+    () => recommendationFor(bmi, answers),
+    [bmi, answers]
+  )
+
+  const recommendedPlanId = useMemo(
+    () => pickPlan(bmi, answers),
+    [bmi, answers]
+  )
 
   return (
     <div className="onb-result">
+      {/* Soft beige → white gradient backdrop, anchored to the whole
+          viewport so the page never reads "raw". */}
+      <div className="onb-result__bg" aria-hidden="true" />
+
       <div className="onb-result__container">
-        <header className="onb-result__header">
-          <span className="onb-result__eyebrow">Your personalized plan</span>
+        <motion.header
+          className="onb-result__header"
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="onb-result__eyebrow">Your personalised plan</span>
           <h1 className="onb-result__title">Based on your answers</h1>
-        </header>
+          <p className="onb-result__subtitle">
+            We&rsquo;ve matched you with the plan most likely to help you
+            reach your goal. You can switch any time.
+          </p>
+        </motion.header>
 
-        <section className="onb-result__summary">
-          <div className="onb-result__bmi">
-            <span className="onb-result__bmi-label">BMI</span>
-            <span className="onb-result__bmi-value">{bmi ?? '—'}</span>
-            <span className={`onb-result__bmi-cat onb-result__bmi-cat--${cat.tone}`}>{cat.label}</span>
-          </div>
-          <p className="onb-result__reco">{recommendation}</p>
-        </section>
+        <BmiResultCard bmi={bmi} recommendation={recommendation} />
 
-        <section className="onb-result__plans">
-          {plans.map((p) => (
-            <article
-              key={p.id}
-              className={`onb-plan ${recommendedPlanId === p.id ? 'onb-plan--recommended' : ''}`}
-            >
-              {recommendedPlanId === p.id && <span className="onb-plan__badge">Recommended</span>}
-              <h3 className="onb-plan__title">{p.title}</h3>
-              <p className="onb-plan__blurb">{p.blurb}</p>
-              <span className="onb-plan__price">{p.price}</span>
-              <button type="button" className="onb-plan__btn" aria-disabled="true">Choose plan</button>
-            </article>
+        <section className="onb-result__plans" aria-label="Plan options">
+          {PLANS.map((plan, index) => (
+            <PlanComparisonCard
+              key={plan.id}
+              plan={plan}
+              recommended={recommendedPlanId === plan.id}
+              index={index}
+              onSelect={() => { /* TODO: navigate to plan detail / checkout */ }}
+            />
           ))}
         </section>
 
-        <div className="onb-result__cta">
+        <motion.div
+          className="onb-result__cta"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
           <button
             type="button"
             className="onb-result__primary"
             onClick={() => navigate('/dashboard')}
           >
-            Continue to consultation
+            Continue to my dashboard
           </button>
           <button
             type="button"
             className="onb-result__ghost"
             onClick={() => navigate('/onboarding/assessment')}
           >
+            <RotateCcw size={14} strokeWidth={2.2} />
             Retake assessment
           </button>
-        </div>
+          <button
+            type="button"
+            className="onb-result__back"
+            onClick={() => navigate(-1)}
+            aria-label="Go back"
+          >
+            <ChevronLeft size={14} strokeWidth={2.2} />
+            Back
+          </button>
+        </motion.div>
       </div>
     </div>
   )
