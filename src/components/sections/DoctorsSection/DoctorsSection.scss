@@ -62,26 +62,26 @@
 }
 
 // =============================================
-// Track container — clips overflow
-// =============================================
-.doctors__track-container {
-  overflow: hidden;
-  width: 100%;
-}
-
-// =============================================
-// Track — elastic translateX, no native scroll
+// Track — native horizontal scroll (smooth)
 // =============================================
 .doctors__track {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
   gap: 20px;
   padding: $spacing-md $spacing-md $spacing-xl $spacing-md;
-  will-change: transform;
-  touch-action: pan-y;
-  user-select: none;
+  // Normal smooth horizontal scrolling — no elastic / rubber-band.
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   cursor: grab;
+
+  // Hide scrollbar while keeping scroll functional.
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include tablet-up {
     padding: $spacing-md $spacing-xl $spacing-xl;
@@ -89,6 +89,13 @@
 
   @include desktop {
     padding: $spacing-md $spacing-xl $spacing-xl;
+  }
+
+  // At large viewports the cards usually fit — center them. `safe`
+  // falls back to flex-start if they ever overflow so the leftmost
+  // card never becomes unreachable by scroll.
+  @media (min-width: 1300px) {
+    justify-content: safe center;
   }
 
   &:active {

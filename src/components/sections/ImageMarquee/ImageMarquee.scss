@@ -557,7 +557,7 @@
 
   img {
     width: 100%;
-    height: 100%;
+    height: 120%;
     object-fit: cover;
     // 17% mirrors the desktop "calc(15% + 8px)" value — at desktop's
     // 420px display height it resolves to 71px (16.9%). Switching to a
@@ -582,12 +582,12 @@
   // size.
   object-position: center 17%;
   display: block;
-  transform: translateX(-100%);
+  // Clean crossfade — both screens stay perfectly stacked (absolute)
+  // and simply fade between each other, no horizontal slide/movement.
   opacity: 0;
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  transition: opacity 0.5s ease-in-out;
 
   &--visible {
-    transform: translateX(0);
     opacity: 1;
   }
 }
