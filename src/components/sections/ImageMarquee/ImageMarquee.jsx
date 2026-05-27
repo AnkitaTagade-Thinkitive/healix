@@ -65,7 +65,7 @@ const ImageMarquee = () => {
 
         {/* Layer 2: Hero text */}
         <div className="marquee__hero">
-          <span className="marquee__label">labs by healix</span>
+          <span className="marquee__label">powered by healix</span>
           <h2 className="marquee__heading">
             Get tested.
             <br />
@@ -76,18 +76,18 @@ const ImageMarquee = () => {
         {/* Layer 3: CTA buttons + Feature card */}
         <div className="marquee__overlay">
           <div className="marquee__overlay-actions">
-            <a href="#" className="marquee__btn marquee__btn--primary" aria-disabled="true">Start my labs</a>
+            <a href="#" className="marquee__btn marquee__btn--primary" aria-disabled="true">Start Testing</a>
             <a href="#" className="marquee__btn marquee__btn--secondary" aria-disabled="true">Learn more</a>
           </div>
           <div ref={cardRef} className="marquee__overlay-card">
             <div className={`marquee__overlay-col ${!scrolled ? 'marquee__overlay-col--active' : ''}`}>
               <h3 className="marquee__overlay-title">
-                Find your
+                Know your
                 <br />
-                baseline
+                health
               </h3>
               <p className="marquee__overlay-text">
-                Get a clear picture of your health with a simple lab test.
+                Get simple insights with easy at-home testing.
               </p>
             </div>
 
@@ -101,14 +101,17 @@ const ImageMarquee = () => {
 
             <div className={`marquee__overlay-col marquee__overlay-col--right ${scrolled ? 'marquee__overlay-col--active' : ''}`}>
               <h3 className="marquee__overlay-title">
-                Plan your
+                Build your
                 <br />
-                breakthrough
+                wellness plan
               </h3>
               <p className="marquee__overlay-text">
-                Optimize your health with a doctor‑developed Action Plan.
+                Personalized guidance designed for your health goals.
               </p>
-              <a href="#" className="marquee__overlay-btn" aria-disabled="true">Explore the plan</a>
+              {/* Commented out until a real destination is wired up.
+                  Restore by removing this comment block:
+              <a href="#" className="marquee__overlay-btn" aria-disabled="true">Explore Care</a>
+              */}
             </div>
           </div>
         </div>
@@ -160,7 +163,7 @@ const ImageMarquee = () => {
             <div className="marquee__bento-visual">
               <img src="/images/h-bento-hp-figure-2.png" alt=""  loading="lazy" decoding="async"/>
             </div>
-            <a href="#" className="marquee__bento-btn" aria-disabled="true">Meet the markers</a>
+            <a href="#" className="marquee__bento-btn" aria-disabled="true">See your results</a>
           </div>
 
           <div className="marquee__bento-card marquee__bento-card--cancer">
@@ -170,7 +173,7 @@ const ImageMarquee = () => {
               cancer types
             </h3>
             <div className="marquee__bento-visual marquee__bento-visual--body">
-              <img src="/images/h--signal-body--desktop-2x-2.png" alt=""  loading="lazy" decoding="async"/>
+              <img src="/images/h--signal-body--desktop-2x-2.webp" alt=""  loading="lazy" decoding="async"/>
             </div>
             <a href="#" className="marquee__bento-btn" aria-disabled="true">Learn more</a>
           </div>

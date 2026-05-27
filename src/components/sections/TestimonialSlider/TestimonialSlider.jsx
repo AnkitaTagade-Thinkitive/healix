@@ -10,7 +10,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 8',
     quote: '\u201CI feel more in control of my eating habits now. I don\u2019t constantly think about food, and my energy levels are much better throughout the day. It\u2019s been a steady and positive change for me.\u201D',
-    name: 'Rohan, 38',
+    name: 'Kathryn, 38',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 4',
     quote: '\u201CI\u2019ve noticed a real difference in how I feel every day. I\u2019m more active, my clothes fit better, and I feel more confident in my routine and progress.\u201D',
-    name: 'Neha, 35',
+    name: 'Jane, 35',
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 7',
     quote: '\u201CI wanted to feel healthier and more active, and that\u2019s exactly what I\u2019m experiencing now. I feel lighter, more energetic, and motivated to stay consistent.\u201D',
-    name: 'Amit, 41',
+    name: 'Devon, 41',
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 8',
     quote: '\u201CI\u2019ve seen steady improvements in my overall health and lifestyle. I feel stronger, more active, and more confident than I have in a long time.\u201D',
-    name: 'Priya, 36',
+    name: 'Kristin, 36',
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 8',
     quote: '\u201CI feel more in control of my eating habits now. I don\u2019t constantly think about food, and my energy levels are much better throughout the day. It\u2019s been a steady and positive change for me.\u201D',
-    name: 'Rohan, 38',
+    name: 'Kathryn, 38',
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 4',
     quote: '\u201CI\u2019ve noticed a real difference in how I feel every day. I\u2019m more active, my clothes fit better, and I feel more confident in my routine and progress.\u201D',
-    name: 'Neha, 35',
+    name: 'Jane, 35',
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 7',
     quote: '\u201CI wanted to feel healthier and more active, and that\u2019s exactly what I\u2019m experiencing now. I feel lighter, more energetic, and motivated to stay consistent.\u201D',
-    name: 'Amit, 41',
+    name: 'Devon, 41',
   },
   {
     id: 8,
@@ -80,7 +80,7 @@ const testimonials = [
     monthsBefore: 'Month 0',
     monthsAfter: 'Month 8',
     quote: '\u201CI\u2019ve seen steady improvements in my overall health and lifestyle. I feel stronger, more active, and more confident than I have in a long time.\u201D',
-    name: 'Priya, 36',
+    name: 'Kristin, 36',
   },
 ]
 
@@ -138,9 +138,9 @@ const TestimonialSlider = () => {
       {/* Heading */}
       <div className="testimonials__header">
         <h2 className="testimonials__heading">
-          Real results,
+          Real people,
           <br />
-          <span className="testimonials__heading-accent">in their words</span>
+          <span className="testimonials__heading-accent"> real progress</span>
         </h2>
       </div>
 
@@ -170,7 +170,7 @@ const TestimonialSlider = () => {
                   <circle cx="12" cy="12" r="12" fill="#244236" />
                   <path d="M7 12.5l3.5 3.5L17 8.5" stroke="#FAEAAC" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
-                Verified review
+                Proven Results
               </span>
             </div>
           </div>
@@ -179,14 +179,12 @@ const TestimonialSlider = () => {
 
       {/* CTA Button */}
       <div className="testimonials__cta-wrap">
-        <button className="testimonials__cta" aria-disabled="true">See if treatment is right for me</button>
+        <button className="testimonials__cta" aria-disabled="true">Read more success stories</button>
       </div>
 
       {/* Disclaimer */}
       <p className="testimonials__disclaimer">
-        Paid testimonials. Before and after images shared by customer. Individual results may vary.
-        Customers were on varying products/dosages. Weight Loss by Healix program includes medication,
-        a reduced calorie diet, and exercise.
+        Results have not been independently verified. Individual outcomes may vary. The Weight Loss program includes prescription treatment, healthy nutrition guidance, and regular exercise support.
       </p>
     </section>
   )

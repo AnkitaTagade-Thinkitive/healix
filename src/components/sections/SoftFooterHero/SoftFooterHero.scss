@@ -84,10 +84,14 @@
   font-family: $font-primary;
   font-size: clamp(28px, 5vw, 56px);
   font-weight: 500;
-  color: rgba(250, 234, 172, 0.75);
+  color: rgb(14 36 17 / 75%);
   line-height: 1.15;
-  margin: 0;
+  margin: -24px 0 0;
   letter-spacing: -0.02em;
+
+  @media (min-width: 768px) and (max-width: 1440px) {
+    margin: -46px 0;
+  }
 }
 
 .soft-footer__heading-bottom {

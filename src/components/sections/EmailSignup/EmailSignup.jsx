@@ -30,14 +30,14 @@ const EmailSignup = () => {
       <div className="cta__container">
         <div className="cta__content">
           <h2 className="cta__title">
-            Unlock the free Guide
+            Start your
             <br />
-            to Protein for
+            wellness
             <br />
-            Weight Loss
+            journey
           </h2>
           <p className="cta__description">
-            Written by board-certified doctors to support your journey.
+            Science-backed guidance for healthier living.
           </p>
 
           {submitted ? (
@@ -58,7 +58,7 @@ const EmailSignup = () => {
                 error={error}
               />
               <Button variant="primary" type="submit" size="lg" className="cta__button">
-                Get the guide
+                Access the Guide
               </Button>
             </form>
           )}

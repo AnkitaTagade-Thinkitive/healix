@@ -65,9 +65,9 @@ const Hero = () => {
     <section className="hero">
       <Container>
         <h1 className="hero__heading">
-          The care your
+          Where <span className="hero__heading-accent">healing</span>
           <br />
-          health deserves
+          meets innovation
         </h1>
 
         <div className="hero__featured">

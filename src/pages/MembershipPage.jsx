@@ -69,8 +69,8 @@ const MembershipPage = () => {
         {/* Text content */}
         <div className="mem-hero__inner">
           <div className="mem-hero__left">
-            <span className="mem-hero__label">Healix Weight Loss Membership</span>
-            <h1 className="mem-hero__heading">Beyond<br />medication</h1>
+            <span className="mem-hero__label">Healix Personalized Weight Care </span>
+            <h1 className="mem-hero__heading"><span className="mem-hero__heading-muted">Not just treatment</span><br />Support for every step</h1>
           </div>
           <div className="mem-hero__right">
             <p className="mem-hero__description">

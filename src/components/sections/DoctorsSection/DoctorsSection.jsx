@@ -178,11 +178,10 @@ const DoctorsSection = () => {
   return (
     <section className="doctors">
       <div className="doctors__header">
-        <h2 className="doctors__title-line1">The best care</h2>
-        <h2 className="doctors__title-line2">by the best in medicine</h2>
+        <h2 className="doctors__title-line1">Care led by experts</h2>
+        <h2 className="doctors__title-line2">focused on better outcomes</h2>
         <p className="doctors__subtitle">
-          Meet the team of leading specialists with decades
-          of combined experience across key specialties.
+         A team of specialists delivering modern personalized healthcare.
         </p>
       </div>
 

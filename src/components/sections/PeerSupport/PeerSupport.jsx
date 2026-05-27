@@ -7,7 +7,7 @@ const PeerSupport = () => {
     <section className="peer">
       <div className="peer__inner">
         <div className="peer__content">
-          <span className="peer__badge">Peer support</span>
+          <span className="peer__badge">Community support</span>
           <h2 className="peer__heading">You’re not doing this alone</h2>
           <p className="peer__description">
             Connect with others on the same path and stay inspired every step
@@ -15,7 +15,7 @@ const PeerSupport = () => {
           </p>
           <button className="peer__btn" aria-disabled="true">Join the community</button>
           <p className="peer__note">
-            Simulated interactions for illustrative purposes only.
+            Community access availability may vary by membership plan.
           </p>
         </div>
 

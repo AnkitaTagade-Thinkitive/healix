@@ -5,22 +5,22 @@ import './FaqSection.scss'
 const faqs = [
   {
     id: 1,
-    question: 'What is the Healix Weight Loss Membership?',
+    question: 'How Does the Weight Loss Program Work?',
     answer: 'The Healix Weight Loss Membership gives you access to clinically proven weight loss treatments, ongoing provider support, and personalized care plans. Your membership includes consultations with licensed healthcare providers, prescription management, and regular check-ins to track your progress.',
   },
   {
     id: 2,
-    question: "What if I'm already on a GLP-1 and want to switch to Healix?",
+    question: "Switching from Another GLP-1 Treatment?",
     answer: "If you're already taking a GLP-1 medication, our providers can work with you to transition your care to Healix. During your consultation, share your current medication and dosage, and your provider will create a personalized plan that ensures a smooth switch without interruption to your treatment.",
   },
   {
     id: 3,
-    question: 'Do you take FSA and HSA?',
+    question: 'Are FSA & HSA Payments Accepted?',
     answer: 'Yes, many of our weight loss treatments are eligible for FSA (Flexible Spending Account) and HSA (Health Savings Account) reimbursement. You can use your FSA/HSA debit card at checkout, or submit your receipt for reimbursement through your benefits provider.',
   },
   {
     id: 4,
-    question: 'Is insurance required?',
+    question: 'Is Health Insurance Necessary?',
     answer: "No, insurance is not required to use Healix. Our pricing is transparent and straightforward. While we don't bill insurance directly, some treatments may be eligible for insurance reimbursement. You can check with your insurance provider for out-of-network benefits.",
   },
 ]

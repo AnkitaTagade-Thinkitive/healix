@@ -39,11 +39,11 @@ const TestosteroneSection = () => {
           </div>
 
           <div className="testo__actions">
-            <Link to="#" className="testo__btn testo__btn--primary">
-              Get started
+            <Link to="#" className="testo__btn testo__btn--primary" aria-disabled="true">
+              Get tested
             </Link>
-            <Link to="#" className="testo__btn testo__btn--secondary">
-              Do I have low T?
+            <Link to="#" className="testo__btn testo__btn--secondary" aria-disabled="true">
+              Know your T Levels
             </Link>
           </div>
 
@@ -57,34 +57,32 @@ const TestosteroneSection = () => {
                 className="testo__card-image"
                 style={{ backgroundImage: "url('/images/h-tmnt-hp-bento-01-D.png')" }}
               />
-              <Link to="#" className="testo__card-btn">
+              <Link to="#" className="testo__card-btn" aria-disabled="true">
                 Learn more
               </Link>
             </div>
 
             <div className="testo__card">
               <div className="testo__card-top">
-                <h3 className="testo__card-title">At-home labs</h3>
-                <p className="testo__card-subtitle">to check your T levels</p>
+                <h3 className="testo__card-title">Smart testing at home</h3>
+                <p className="testo__card-subtitle">for better health insights</p>
               </div>
               <div
                 className="testo__card-image"
-                style={{ backgroundImage: "url('/images/h-tmnt-hp-bento-02-D.png')" }}
+                style={{ backgroundImage: "url('/images/h-tmnt-hp-bento-02-D.webp')" }}
               />
-              <Link to="#" className="testo__card-btn">
-                Start testing
+              <Link to="#" className="testo__card-btn" aria-disabled="true">
+                Explore Care
               </Link>
             </div>
           </div>
 
           <div className="testo__disclaimer">
             <p>
-              Compounded products are not approved nor evaluated for safety,
-              effectiveness, or quality by the FDA.
+              These treatments are compounded and are not FDA approved.
             </p>
             <p className="testo__disclaimer-small">
-              Image is for illustrative purposes only. Individual lab results
-              may vary.
+              Images are used for visual representation only.
             </p>
           </div>
         </div>

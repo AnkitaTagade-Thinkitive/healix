@@ -45,27 +45,27 @@ const MembershipSection = () => {
       <div className="membership__inner">
         <div className="membership__content">
           <h2 className="membership__heading">
-            Get on-demand support
+            Expert support whenever 
             <br />
-            with membership
+            you need it
           </h2>
 
           <ul className="membership__list">
             <li className="membership__list-item">
               <span className="membership__check">&#10003;</span>
-              Nutrition and exercise guidance
+              Personalized treatment guidance
             </li>
             <li className="membership__list-item">
               <span className="membership__check">&#10003;</span>
-              Access to GLP-1 medications
+              Access to licensed providers
             </li>
             <li className="membership__list-item">
               <span className="membership__check">&#10003;</span>
-              Dedicated Care Team
+              Ongoing progress tracking
             </li>
           </ul>
 
-          <button className="membership__btn" aria-disabled="true">Go to membership</button>
+          <button className="membership__btn" aria-disabled="true">Start your consultation</button>
         </div>
 
         <div className="membership__video-wrap">

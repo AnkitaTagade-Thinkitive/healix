@@ -17,7 +17,7 @@ const WeightLossPage = () => {
 
         <div className="weight-hero__left">
           <h1 className="weight-hero__title">
-            Weight loss <br />
+            <span className="weight-hero__title-accent">Weight loss</span> <br />
             made effective
           </h1>
         </div>
@@ -28,7 +28,7 @@ const WeightLossPage = () => {
           </p>
 
           <button className="weight-hero__btn" aria-disabled="true">
-            See if I'm eligible
+            Take the First Step
           </button>
         </div>
 

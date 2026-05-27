@@ -6,10 +6,17 @@
 // =============================================
 .cta {
   width: 100%;
-  padding: $spacing-xs 0;
+  // Always keep a side gutter so the rounded card never touches the
+  // viewport edges. The 90px desktop rule still wins above 1300px.
+  padding: $spacing-xs $spacing-sm;
+
+  @include tablet-up {
+    padding: $spacing-xs $spacing-md;
+  }
 
   @include desktop {
     margin-bottom: 37px;
+    padding: $spacing-xs $spacing-lg;
   }
 
   @media (min-width: 1300px) {
@@ -25,37 +32,62 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  border-radius: $radius-xl;
+  border-radius: 32px;
   overflow: hidden;
   isolation: isolate;
   min-height: 480px;
   display: flex;
   align-items: center;
 
-  // Background image
+  // Background image + fallback colour. The `top -40px` offset below
+  // shifts the image up by 40px which leaves the container's bottom
+  // 40px uncovered when the `cover` scaling lands close to the
+  // container's height (which happens around narrower laptop widths
+  // ~1024-1200px). Without this colour, the uncovered strip showed
+  // the white body bg through the rounded corners, making them look
+  // square. The colour is tuned to match the image's dark-green palette.
+  background-color: #1A362D;
   background-image: url('/images/h_homepage_lead_cap_L.png');
+  // `cover` fills the entire section with the image. Top anchor
+  // means any overflow from cover scaling is cropped FROM THE BOTTOM,
+  // keeping the top portion of the composition fully visible.
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right top -40px;
+  background-position: right top;
 
   @include desktop {
     max-width: 1920px;
-    border-radius: 24px;
+    border-radius: 40px;
+    min-height: 600px;
+  }
+
+  @media (min-width: 1440px) {
+    min-height: 720px;
   }
 
   @media (min-width: 740px) and (max-width: 1200px) {
-    background-position: 65% top -40px;
+    background-position: 65% top;
+  }
+
+  // 1201-1399px: the container is narrower than its 1920px max but
+  // wider than the centered range above, so the default `right` bg
+  // position pushes the image hard against the right rounded corner
+  // and reads as a square edge. Shift the focal point slightly left
+  // and reaffirm the rounded corners so the curvature stays visible.
+  @media (min-width: 1201px) and (max-width: 1399px) {
+    background-position: 75% top;
+    border-radius: 40px;
   }
 
   @include tablet {
     min-height: 420px;
-    background-position: 75% top -40px;
+    background-position: 75% top;
   }
 
   @include mobile {
     min-height: 560px;
     align-items: flex-end;
-    background-position: center top -40px;
+    background-position: center top;
   }
 
   @media (max-width: 575.98px) {
@@ -82,6 +114,10 @@
 
   @include desktop {
     padding: $spacing-4xl $spacing-3xl;
+  }
+
+  @media (min-width: 1300px) and (max-width: 1372px) {
+    padding: 3rem 4rem;
   }
 
   @include mobile {

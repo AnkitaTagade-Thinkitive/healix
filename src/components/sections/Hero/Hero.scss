@@ -61,6 +61,12 @@
     }
   }
 
+  // Accent word inside the heading (e.g. "healing").
+  &__heading-accent {
+    color: #357A64;
+    font-weight: 500;
+  }
+
   // ── Featured Cards Grid ──
   &__featured {
     display: grid;

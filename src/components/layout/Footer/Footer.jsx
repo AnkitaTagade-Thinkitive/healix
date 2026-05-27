@@ -6,9 +6,9 @@ const navSections = [
   {
     title: 'Learn',
     links: [
-      { label: 'Labs', href: '#' },
-      { label: 'Weight Loss', href: '#' },
-      { label: 'Sexual Health', href: '#' },
+      { label: 'Labs', href: '/labs' },
+      { label: 'Weight Loss', href: '/weight-loss' },
+      { label: 'Sexual Health', href: '/sexual-health/erectile-dysfunction' },
       { label: 'Testosterone', href: '#' },
       { label: 'Hair Regrowth', href: '#' },
       { label: 'Mental Health', href: '#' },
@@ -143,9 +143,9 @@ const Footer = () => {
             <div className="footer__card-top">
               <p className="footer__card-label">Download the free Healix app</p>
               <h3 className="footer__card-heading">
-                Total care.
+                Better support.
                 <br />
-                Totally different.
+                Better results. 
               </h3>
               <div className="footer__card-download">
                 <div className="footer__card-store">
@@ -166,7 +166,7 @@ const Footer = () => {
               <p className="footer__card-caption">For iOS and Android</p>
             </div>
             <div className="footer__card-phone">
-              <img src="/images/footer-app_static-h.png" alt="Healix app" loading="lazy"  decoding="async"/>
+              <img src="/images/footer-app_static-h.webp" alt="Healix app" loading="lazy"  decoding="async"/>
             </div>
           </div>
         </div>
@@ -177,9 +177,9 @@ const Footer = () => {
             <div className="footer__card-top">
               <p className="footer__card-label">Download the free Healix app</p>
               <h3 className="footer__card-heading">
-                Total care.
+                Better support.
                 <br />
-                Totally different.
+                Better results.
               </h3>
               <div className="footer__card-download">
                 <div className="footer__card-store">
@@ -200,7 +200,7 @@ const Footer = () => {
               <p className="footer__card-caption">For iOS and Android</p>
             </div>
             <div className="footer__card-phone">
-              <img src="/images/footer-app_static-h.png" alt="Healix app" loading="lazy"  decoding="async"/>
+              <img src="/images/footer-app_static-h.webp" alt="Healix app" loading="lazy"  decoding="async"/>
             </div>
           </div>
           <div className="footer__nav">
@@ -283,7 +283,7 @@ const Footer = () => {
               ))}
             </div>
             <p className="footer__trust-copyright">
-              &copy; {currentYear} Healix Health, Inc. All rights reserved. HEALIX, and H are trademarks of Healix, Inc.
+              &copy; {currentYear} Healix Inc. All rights reserved.
             </p>
           </div>
         </div>

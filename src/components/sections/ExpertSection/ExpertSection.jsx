@@ -18,13 +18,12 @@ const ExpertSection = () => {
 
         <div className="expert__content">
           <h2 className="expert__heading">
-            At Healix, we
+            Healthcare 
             <br />
-            <span className="expert__heading-highlight">make it personal</span>
+            <span className="expert__heading-highlight">that puts you first</span>
           </h2>
           <p className="expert__description">
-            Get care developed by in-house experts with decades
-            of clinical excellence.
+            Connect with experienced medical professionals who create treatment plans tailored to your health and wellness journey.
           </p>
           <button className="expert__btn" aria-disabled="true">Meet Dr. Stacy Smith</button>
         </div>

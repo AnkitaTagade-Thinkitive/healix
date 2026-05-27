@@ -128,6 +128,7 @@ const WLOffcanvas = ({ isOpen, onClose, from }) => {
                   <button
                     key={item}
                     className="wl-oc__item"
+                    aria-disabled={item === 'Calculate Your Body Mass Index' ? 'true' : undefined}
                     onClick={() => {
                       if (item === 'Weight Loss Treatments') {
                         onClose()

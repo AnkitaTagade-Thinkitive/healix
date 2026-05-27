@@ -5,12 +5,12 @@ import './MemFaq.scss'
 const faqs = [
   {
     id: 1,
-    question: 'What is the Healix Weight Loss Membership?',
+    question: 'What’s included in the Healix  Personalized Weight Care plan?',
     answer: 'The Healix Weight Loss Membership gives you access to treatment options (if eligible) along with ongoing support from a dedicated care team.\n\nIt also includes in-app progress tracking, personalized adjustments over time, and guidance to help you stay on track.',
   },
   {
     id: 2,
-    question: 'How much does the membership cost?',
+    question: 'How does pricing work?',
     answer: 'The membership starts at $39 for your first month, then renews at $149/month. Medication costs are separate.\n\nYou can cancel anytime. If prescribed, medication pricing depends on your treatment plan.',
   },
 ]

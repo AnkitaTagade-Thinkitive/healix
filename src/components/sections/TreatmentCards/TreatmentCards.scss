@@ -292,9 +292,24 @@
 // Card — Footer (safety link + buttons)
 // =============================================
 .treatments__card-footer {
+  position: relative; // anchor for the FDA badge
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+// FDA badge — sits in the upper-right corner of the footer, only on
+// items flagged `fdaBadge: true` in the data (currently GLP-1 Pill,
+// GLP-1 Pen, and Zepbound®). Negative `top` lifts it above the
+// footer's top edge so it visually sits at the boundary with the
+// image area and doesn't crowd the buttons row.
+.treatments__card-fda {
+  position: absolute;
+  top: -90px;
+  right: 0;
+  width: 48px;
+  height: auto;
+  pointer-events: none;
 }
 
 .treatments__card-safety {
@@ -315,6 +330,8 @@
 .treatments__card-buttons {
   display: flex;
   gap: 8px;
+  // Push buttons below the FDA badge sitting at the footer's top-right.
+  margin-top: 8px;
 }
 
 .treatments__btn {

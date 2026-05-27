@@ -8,6 +8,7 @@ const treatments = [
     price: 'From $149/mo†',
     priceNote: 'with membership',
     rx: true,
+    fdaBadge: true,
     highlight: 'Now at Healix',
     img: '/images/product_wegovy-pill.png',
     buttons: ['Get started', 'View details'],
@@ -18,6 +19,7 @@ const treatments = [
     price: 'From $199/mo†',
     priceNote: 'with membership',
     rx: true,
+    fdaBadge: true,
     highlight: 'Now at Healix',
     img: '/images/product_wegovy-pen.png',
     buttons: ['Get started', 'View details'],
@@ -29,7 +31,7 @@ const treatments = [
     priceNote: 'with membership',
     rx: true,
     img: '/images/product_ozempic.png',
-    buttons: ['Get started'],
+    buttons: ['Get started', 'View details'],
   },
   {
     id: 4,
@@ -38,7 +40,7 @@ const treatments = [
     priceNote: 'with membership',
     rx: true,
     img: '/images/product_mounjaro.png',
-    buttons: ['Get started'],
+    buttons: ['Get started', 'View details'],
   },
   {
     id: 5,
@@ -46,8 +48,9 @@ const treatments = [
     price: '$1,899/mo†',
     priceNote: 'with membership',
     rx: true,
+    fdaBadge: true,
     img: '/images/product_zepbound.png',
-    buttons: ['Get started'],
+    buttons: ['Get started', 'View details'],
   },
   {
     id: 6,
@@ -56,7 +59,7 @@ const treatments = [
     priceNote: 'with membership',
     rx: true,
     img: '/images/product_liraglutide.png',
-    buttons: ['Get started'],
+    buttons: ['Get started', 'View details'],
   },
 ]
 
@@ -117,17 +120,16 @@ const TreatmentCards = () => {
         <div className="treatments__header">
           <div className="treatments__header-left">
             <h2 className="treatments__heading">
-              Lose weight
+              Feel Better.
               <br />
-              <span className="treatments__heading-accent">the way you want</span>
+              <span className="treatments__heading-accent">Look Lighter.</span>
             </h2>
           </div>
           <div className="treatments__header-right">
             <p className="treatments__subheading">
-              Reach your goals with doctor-trusted GLP-1s, including
-              FDA-approved options.
+              Discover prescription weight loss treatments tailored to your goals, lifestyle, and medical needs — all guided by licensed healthcare professionals.
             </p>
-            <button className="treatments__cta" aria-disabled="true">Start losing weight</button>
+            <button className="treatments__cta" aria-disabled="true">Begin Your Fitness Journey</button>
           </div>
         </div>
       </div>
@@ -161,11 +163,17 @@ const TreatmentCards = () => {
                decoding="async"/>
             </div>
 
-            {/* Footer: safety link + buttons */}
+            {/* Footer: buttons + safety link (safety sits below buttons) */}
             <div className="treatments__card-footer">
-              <a href="#" className="treatments__card-safety" aria-disabled="true">
-                Important safety information
-              </a>
+              {item.fdaBadge && (
+                <img
+                  src="/images/FDA_Approved_Badge_Vector.svg"
+                  alt="FDA Approved"
+                  className="treatments__card-fda"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
               <div className="treatments__card-buttons">
                 {item.buttons.map((btn) => (
                   <button
@@ -180,6 +188,9 @@ const TreatmentCards = () => {
                   </button>
                 ))}
               </div>
+              <a href="#" className="treatments__card-safety" aria-disabled="true">
+                Important safety information
+              </a>
             </div>
           </div>
         ))}
@@ -187,7 +198,7 @@ const TreatmentCards = () => {
 
       {/* Bottom CTA — mobile only */}
       <div className="treatments__cta-bottom-wrap">
-        <button className="treatments__cta treatments__cta--bottom" aria-disabled="true">Start losing weight</button>
+        <button className="treatments__cta treatments__cta--bottom" aria-disabled="true">Begin Your Fitness Journey</button>
       </div>
 
       {/* Disclaimer — centered container */}
@@ -205,7 +216,7 @@ const TreatmentCards = () => {
           </p>
           <p>
             *Along with a reduced-calorie diet and increased physical activity.
-            Individual results may vary. <a href="#" className="treatments__disclaimer-link" aria-disabled="true">See more</a>
+            Individual results may vary.
           </p>
         </div>
       </div>

@@ -85,13 +85,42 @@
   height: 62%;
   object-fit: cover;
   object-position: center 30%;
-
-  @media (min-width: 381px) and (max-width: 725px) {
-    height: 34%;
-  }
+  // Nudge the rendered video slightly upward inside its container
+  // without changing its size or affecting surrounding layout —
+  // `transform` doesn't trigger reflow so the section's flow is intact.
+  transform: translateY(-14%);
+  // Belt-and-suspenders: -2px hides subpixel rounding gaps; mask-image
+  // fades the bottom ~15% of the video to transparent so the container
+  // bg (#244236) blends through instead of meeting the video at a hard
+  // colour-mismatched seam.
+  margin-bottom: -2px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 80%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 80%,
+    transparent 100%
+  );
 
   @media (max-width: 380px) {
     height: 29%;
+  }
+
+  @media (min-width: 381px) and (max-width: 599px) {
+    height: 34%;
+  }
+
+  // Intermediate ramp so the video grows smoothly from the mobile
+  // composition (34% + center 30%) to the tablet composition (62% +
+  // center center) instead of snapping at a single breakpoint.
+  @media (min-width: 600px) and (max-width: 767px) {
+    height: 48%;
+    object-position: center center;
   }
 
   @include tablet-up {
@@ -136,7 +165,7 @@
 .wegovy__heading-line1 {
   font-family: $font-primary;
   font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
+  font-weight: 500;
   line-height: $line-height-tight;
   color: $color-white;
   letter-spacing: -0.02em;
@@ -153,8 +182,7 @@
 .wegovy__heading-line2 {
   font-family: $font-primary;
   font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
-  font-style: italic;
+  font-weight: 600;
   line-height: $line-height-tight;
   color: #244236;
   letter-spacing: -0.02em;
@@ -176,6 +204,26 @@
   flex-direction: column;
   align-items: center;
   margin-top: auto;
+
+  @media (max-width: 399px) {
+    margin-top: 320px;
+  }
+
+  @media (min-width: 400px) and (max-width: 511px) {
+    margin-top: 466px;
+  }
+
+  @media (min-width: 600px) and (max-width: 743px) {
+    margin-top: 1004px;
+  }
+
+  @media (min-width: 743px) and (max-width: 767px) {
+    margin-top: 700px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1600px) {
+    margin-top: 1080px;
+  }
 }
 
 // =============================================
@@ -188,7 +236,6 @@
   line-height: $line-height-normal;
   color: $color-white;
   margin-bottom: $spacing-md;
-  max-width: 720px;
   padding: 0 $spacing-xs;
 
   @include tablet-up {
@@ -209,7 +256,7 @@
 }
 
 .wegovy__highlight {
-  color: #1b3229;
+  color: #A8F5C5;
   font-weight: $font-weight-bold;
 }
 
@@ -223,7 +270,7 @@
   padding: 12px 32px;
   font-family: $font-primary;
   font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
+  font-weight: 500;
   color: $color-dark;
   background-color: #e4f3e3;
   border-radius: $radius-pill;
@@ -307,7 +354,7 @@
 .wegovy__products-heading {
   font-family: $font-primary;
   font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
+  font-weight: 500;
   line-height: $line-height-snug;
   color: $color-white;
   margin-bottom: 24px;
@@ -329,11 +376,37 @@
 .wegovy__products-row {
   display: flex;
   gap: 14px;
+  // Horizontal scroll capability enables the trackpad two-finger
+  // gesture and the JS drag handler. Vertical wheel input is routed
+  // to the page by the JS wheel handler in WegovySpotlight.jsx, so
+  // the slider never moves from the mouse wheel.
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 8px $spacing-md;
   margin-bottom: 40px;
+
+  // Drag-to-scroll affordance — `cursor: grab` hints that the row is
+  // draggable; `is-dragging` is toggled in JS while the user is
+  // actively dragging.
+  cursor: grab;
+
+  // Always disable native drag-ghost on the row's media. Without this
+  // the browser starts its own drag-image on the link/img the moment
+  // the user starts moving the mouse, which swallows pointermove and
+  // breaks the JS drag handler.
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  &.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto; // disable smooth scroll while dragging
+    user-select: none;
+  }
 
   @include tablet-up {
     padding: 8px $spacing-lg;
@@ -494,11 +567,19 @@
   font-family: $font-primary;
   font-size: $font-size-base;
   font-weight: $font-weight-bold;
-  color: $color-white;
+  color: #142B23;
   line-height: $line-height-snug;
 
   @include tablet-up {
     font-size: 1.85rem;
+  }
+
+  // At 768-1023px the card is only 290px wide; the long "Generic
+  // Liraglutide" label wraps to two lines and overflows the card's
+  // fixed 370px height. Shrink the font in that range so it stays
+  // single-line.
+  @media (min-width: 768px) and (max-width: 1023px) {
+    font-size: 1.25rem;
   }
 }
 
@@ -506,7 +587,7 @@
   font-family: $font-primary;
   font-size: $font-size-xs;
   font-weight: $font-weight-regular;
-  color: #FFFFFFE6;
+  color: #000000;
 
   @include tablet-up {
     font-size: 0.75rem;
@@ -517,7 +598,7 @@
   font-family: $font-primary;
   font-size: $font-size-xs;
   font-weight: $font-weight-regular;
-  color: #FFFFFFE6;
+  color: #000000;
 
   @include tablet-up {
     font-size: 1.01rem;
@@ -640,7 +721,7 @@
 .wegovy__snac-heading {
   font-family: $font-primary;
   font-size: clamp(22px, 3.5vw, 40px);
-  font-weight: $font-weight-bold;
+  font-weight: 500;
   line-height: 1.2;
   color: $color-white;
 }
@@ -778,7 +859,7 @@
 .wegovy__member-heading {
   font-family: $font-primary;
   font-size: clamp(22px, 3.5vw, 40px);
-  font-weight: $font-weight-bold;
+  font-weight: 500;
   line-height: 1.2;
   color: $color-white;
 }

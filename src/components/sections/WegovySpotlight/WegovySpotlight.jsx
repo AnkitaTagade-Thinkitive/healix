@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './WegovySpotlight.scss'
 
@@ -65,6 +66,85 @@ const products = [
 ]
 
 const WegovySpotlight = () => {
+  // Horizontal scroll for `.wegovy__products-row`:
+  //   - Trackpad two-finger gestures: native (no work needed).
+  //   - Click + drag (mouse only): drag-to-scroll like a carousel.
+  //     Touch is left alone so the native -webkit-overflow-scrolling
+  //     momentum keeps working on mobile.
+  // Vertical mouse wheel is handled entirely by the browser — no
+  // listener intercepts it, so vertical page scrolling stays
+  // instant and natural. SCSS prevents the row from consuming
+  // vertical wheel via `overflow-y: hidden`.
+  const productsRowRef = useRef(null)
+
+  useEffect(() => {
+    const el = productsRowRef.current
+    if (!el) return
+
+    // ── Drag ───────────────────────────────────────────────────────
+    // `dragDistance` doubles as a click-suppressor: if the user moved
+    // beyond DRAG_CLICK_THRESHOLD px while dragging, swallow the click
+    // that fires on pointerup so the underlying <Link> doesn't navigate.
+    const DRAG_CLICK_THRESHOLD = 5
+    let isDragging = false
+    let startX = 0
+    let startScrollLeft = 0
+    let dragDistance = 0
+
+    const onPointerDown = (e) => {
+      if (e.pointerType !== 'mouse') return
+      if (e.button !== 0) return
+      isDragging = true
+      dragDistance = 0
+      startX = e.clientX
+      startScrollLeft = el.scrollLeft
+      el.classList.add('is-dragging')
+    }
+
+    const onPointerMove = (e) => {
+      if (!isDragging) return
+      const dx = e.clientX - startX
+      if (Math.abs(dx) > dragDistance) dragDistance = Math.abs(dx)
+      el.scrollLeft = startScrollLeft - dx
+    }
+
+    const stopDrag = () => {
+      if (!isDragging) return
+      isDragging = false
+      el.classList.remove('is-dragging')
+    }
+
+    // Capture-phase click handler — runs before the <Link>'s click
+    // handler so we can stop it from navigating after a drag.
+    const onClickCapture = (e) => {
+      if (dragDistance > DRAG_CLICK_THRESHOLD) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+      dragDistance = 0
+    }
+
+    // Suppress the browser's default <a>/<img> drag-ghost behavior
+    // so it doesn't hijack the pointer stream from us mid-drag.
+    const onDragStart = (e) => e.preventDefault()
+
+    el.addEventListener('pointerdown', onPointerDown)
+    window.addEventListener('pointermove', onPointerMove)
+    window.addEventListener('pointerup', stopDrag)
+    window.addEventListener('pointercancel', stopDrag)
+    el.addEventListener('click', onClickCapture, true)
+    el.addEventListener('dragstart', onDragStart)
+
+    return () => {
+      el.removeEventListener('pointerdown', onPointerDown)
+      window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointerup', stopDrag)
+      window.removeEventListener('pointercancel', stopDrag)
+      el.removeEventListener('click', onClickCapture, true)
+      el.removeEventListener('dragstart', onDragStart)
+    }
+  }, [])
+
   return (
     <section className="wegovy">
       <div className="wegovy__container">
@@ -89,8 +169,8 @@ const WegovySpotlight = () => {
         {/* Content overlay */}
         <div className="wegovy__content">
           <h2 className="wegovy__heading">
-            <span className="wegovy__heading-line1">Smarter weight loss</span>
-            <span className="wegovy__heading-line2">starts today</span>
+            <span className="wegovy__heading-line1">Start today </span>
+            <span className="wegovy__heading-line2">Smarter weight loss</span>
           </h2>
 
           <div className="wegovy__bottom">
@@ -115,17 +195,22 @@ const WegovySpotlight = () => {
         {/* Product cards row */}
         <div className="wegovy__products">
           <h3 className="wegovy__products-heading">
-            Explore GLP-1
-            <br />
-            options
+            Explore GLP-1 options
+            {/* <br /> */}
+            
           </h3>
 
-          <div className="wegovy__products-row">
+          <div className="wegovy__products-row" ref={productsRowRef}>
             {products.map((product) => (
               <Link
                 key={product.id}
                 to={product.href}
                 className="wegovy__product-card"
+                draggable={false}
+                // Navigation temporarily disabled — clicking a product
+                // card no longer redirects. To restore the original
+                // behavior, delete the onClick line below.
+                onClick={(e) => e.preventDefault()}
               >
                 <div className="wegovy__product-image-area">
                   {(product.badge || product.fdaBadge) && (
@@ -137,7 +222,7 @@ const WegovySpotlight = () => {
                       )}
                       {product.fdaBadge && (
                         <img
-                          src="https://cloudinary.forhims.com/image/upload/v1773990110/Novo Nordisk Launch/Carousel/FDA_Approved_Badge_Vector.svg"
+                          src="/images/FDA_Approved_Badge_Vector.svg"
                           alt="FDA Approved"
                           className="wegovy__product-fda"
                          loading="lazy" decoding="async"/>
@@ -182,7 +267,7 @@ const WegovySpotlight = () => {
                   <span className="wegovy__snac-heading--gold">a SNAC</span>
                 </h3>
                 <Link to="/science" className="wegovy__snac-btn">
-                  See the science
+                  See the Research
                 </Link>
               </div>
               <video
@@ -238,9 +323,9 @@ const WegovySpotlight = () => {
               *Along with a reduced-calorie diet and increased physical
               activity. Individual results may vary.
             </p>
-            <Link to="/weight-loss/disclaimer" className="wegovy__snac-readmore">
+            {/* <Link to="/weight-loss/disclaimer" className="wegovy__snac-readmore">
               Read more
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

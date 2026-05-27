@@ -22,7 +22,7 @@ const ProductRange = () => {
             Join Healix
           </button>
           <button className="prod-range__btn prod-range__btn--secondary" aria-disabled="true">
-            Explore my options
+            Explore options
           </button>
         </div>
       </div>

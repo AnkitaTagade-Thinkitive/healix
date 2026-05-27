@@ -20,11 +20,14 @@ const sidebarLinks = [
   { label: 'Weight Loss', href: '#' },
   { label: 'Labs', href: '#' },
   { label: 'Sexual Health', href: '#' },
-  { label: 'Testosterone', href: '#' },
-  { label: 'Hair Regrowth', href: '#' },
-  { label: 'Mental Health', href: '#' },
-  { label: 'Skin', href: '#' },
-  { label: 'Everyday Health', href: '#' },
+  // The five below are placeholders with no real destinations yet. The
+  // `disabled` flag is rendered as aria-disabled — the global rule in
+  // styles/global.scss removes the pointer cursor + neutralizes hover.
+  { label: 'Testosterone', href: '#', disabled: true },
+  { label: 'Hair Regrowth', href: '#', disabled: true },
+  { label: 'Mental Health', href: '#', disabled: true },
+  { label: 'Skin', href: '#', disabled: true },
+  { label: 'Everyday Health', href: '#', disabled: true },
 ]
 
 const topTreatments = [
@@ -37,11 +40,14 @@ const topTreatments = [
 ]
 
 const wlLearnLinks = [
-  { label: 'About Healix', href: '#' },
-  { label: 'Clinical Excellence', href: '#' },
-  { label: 'The Science', href: '#' },
-  { label: 'Blog', href: '#' },
-  { label: 'Healix Benefits', href: '#' },
+  // Placeholders — `disabled` is rendered as aria-disabled so the global
+  // rule in styles/global.scss removes the pointer cursor + neutralizes
+  // hover. Drop the flag on any entry once it has a real destination.
+  { label: 'About Healix', href: '#', disabled: true },
+  { label: 'Clinical Excellence', href: '#', disabled: true },
+  { label: 'The Science', href: '#', disabled: true },
+  { label: 'Blog', href: '#', disabled: true },
+  { label: 'Healix Benefits', href: '#', disabled: true },
 ]
 
 // --- Sexual Health sub-menu data ---
@@ -187,6 +193,7 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                       <NavLink
                         to={link.href}
                         className="sidebar__link"
+                        aria-disabled={link.disabled ? 'true' : undefined}
                         onClick={(e) => {
                           if (link.label === 'Weight Loss') {
                             e.preventDefault()
@@ -439,6 +446,7 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                   <li key={link.label}>
                     <button
                       className="sidebar__link"
+                      aria-disabled={link.disabled ? 'true' : undefined}
                       onClick={() => {
                         if (link.label === 'Weight Loss') {
                           closeSidebar()
@@ -491,6 +499,7 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                   <li key={link.label}>
                     <button
                       className="sidebar__link"
+                      aria-disabled={link.disabled ? 'true' : undefined}
                       onClick={() => {
                         closeSidebar()
                         if (link.label === 'The Science') navigate('/science')
@@ -504,19 +513,6 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
               </ul>
             </div>
 
-            <div className="sidebar-wl__section">
-              <span className="sidebar-wl__section-label">OUR BRANDS</span>
-              <div className="sidebar-wl__brand-card">
-                <img src="/images/Footer-Hers.png" alt="hers" className="sidebar-wl__brand-avatar"  loading="lazy" decoding="async"/>
-                <div className="sidebar-wl__brand-info">
-                  <span className="sidebar-wl__brand-name">hers</span>
-                  <span className="sidebar-wl__brand-link">visit forhers.com</span>
-                </div>
-                <svg className="sidebar-wl__brand-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M7 17L17 7M17 7H7M17 7v10" />
-                </svg>
-              </div>
-            </div>
           </div>
         )}
       </aside>

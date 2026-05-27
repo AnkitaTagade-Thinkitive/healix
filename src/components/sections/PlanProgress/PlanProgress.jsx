@@ -1,9 +1,9 @@
 import './PlanProgress.scss'
 
 const bullets = [
-  'Personalized plan with adjustments as needed',
-  '24/7 access to licensed providers',
-  'Dedicated care team for regular follow-ups',
+  'Guidance tailored to your health goals',
+  'Support from licensed medical professionals',
+  'Ongoing care throughout your journey',
 ]
 
 const PlanProgress = () => {
@@ -20,7 +20,7 @@ const PlanProgress = () => {
         </div>
 
         <div className="plan-prog__content">
-          <span className="plan-prog__badge">Comprehensive care</span>
+          <span className="plan-prog__badge">Personalized Care</span>
           <h2 className="plan-prog__heading">Ongoing care that drives progress</h2>
           <p className="plan-prog__description">
             With support from day one and a plan built around your routine,
@@ -39,7 +39,7 @@ const PlanProgress = () => {
             ))}
           </ul>
 
-          <button className="plan-prog__btn" aria-disabled="true">Get my plan</button>
+          <button className="plan-prog__btn" aria-disabled="true">Continue your journey</button>
         </div>
       </div>
     </section>

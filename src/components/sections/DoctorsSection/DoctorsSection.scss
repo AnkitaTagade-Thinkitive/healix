@@ -40,6 +40,12 @@
   color: $color-dark;
   line-height: 1.1;
   margin: 0 0 $spacing-lg;
+
+  // Keep on a single line for tablet+ — the parent's max-width was
+  // breaking it into two lines at larger viewports.
+  @include tablet-up {
+    white-space: nowrap;
+  }
 }
 
 .doctors__subtitle {
@@ -69,6 +75,7 @@
 .doctors__track {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   gap: 20px;
   padding: $spacing-md $spacing-md $spacing-xl $spacing-md;
   will-change: transform;
@@ -77,11 +84,11 @@
   cursor: grab;
 
   @include tablet-up {
-    padding: $spacing-md $spacing-xl $spacing-xl 120px;
+    padding: $spacing-md $spacing-xl $spacing-xl;
   }
 
   @include desktop {
-    padding: $spacing-md $spacing-xl $spacing-xl 280px;
+    padding: $spacing-md $spacing-xl $spacing-xl;
   }
 
   &:active {

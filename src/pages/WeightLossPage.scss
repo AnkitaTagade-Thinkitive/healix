@@ -29,12 +29,26 @@
 }
 
 .weight-hero__title {
-  font-size: 55px;
+  // Fluid scale: 30px on a 360px viewport → 55px at 1440px+.
+  // `clamp(min, preferred, max)` removes the need for stepwise
+  // media-query overrides at most breakpoints.
+  font-size: clamp(30px, calc(1.25rem + 2.5vw), 55px);
   font-weight: 500;
   line-height: 1.1;
   color: rgba(36, 66, 54, 0.75);
   margin: 0;
-  word-spacing: -7px;
+  // word-spacing: -7px;
+
+  @media (min-width: 769px) {
+    margin-bottom: 50px;
+  }
+}
+
+// Accent span around "Weight loss" — darker colour + heavier weight
+// than the rest of the title.
+.weight-hero__title-accent {
+  color: #1a362d;
+  font-weight: 600;
 }
 
 .weight-hero__right {
@@ -44,9 +58,9 @@
 
 .weight-hero__text {
   word-spacing: -2px;
-    font-weight: 600;
-    font-size: 25px;
-  font-size: 18px;
+  font-weight: 600;
+  // Fluid scale: 16px on a 360px viewport → 29px at 1440px+.
+  font-size: clamp(16px, calc(0.75rem + 1.1vw), 29px);
   line-height: 1.6;
   margin-bottom: 30px;
   color: rgba(36, 66, 54, 0.80);
@@ -79,8 +93,8 @@
   }
 
   .weight-hero__title {
-    font-size: 40px;
     text-align: left;
+    // font-size handled by the `clamp()` on the base rule.
   }
 
   .weight-hero__right {
