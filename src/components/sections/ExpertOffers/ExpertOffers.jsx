@@ -14,7 +14,7 @@ const cards = [
   {
     title: 'Member-only perks',
     text: 'Unlock exclusive benefits and partner offers as a member.',
-    image: '/images/h-Exclusive-Offers-05.png',
+    image: '/images/h-Exclusive-Offers-05.webp',
   },
 ]
 
