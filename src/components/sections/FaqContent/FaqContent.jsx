@@ -4,66 +4,66 @@ import './FaqContent.scss'
 const membershipFaqs = [
   {
     id: 'm1',
-    question: 'What is the weight loss membership?',
-    answer: 'The membership provides access to GLP-1 treatment options along with continuous support from a dedicated care team. It also includes tools to track your progress, guidance for managing side effects, and adjustments to your plan as your needs change.',
+    question: 'What is included in the weight loss membership?',
+    answer: 'The membership includes personalized weight management support, expert guidance, wellness resources, and access to ongoing progress tracking tools.',
   },
   {
     id: 'm2',
-    question: 'How much does the membership cost?',
-    answer: 'The membership starts with a lower introductory fee for the first month, followed by a monthly renewal. Medication is billed separately and pricing depends on your prescribed treatment. You can cancel at any time, but doing so may affect access to active care and treatment plans.',
+    question: 'How do I get started with the membership?',
+    answer: 'You can begin by completing a quick online assessment to help determine the best weight loss approach for your goals and lifestyle.',
   },
   {
     id: 'm3',
-    question: 'Is insurance required?',
-    answer: 'No. You can access the program without insurance, making the process simple and straightforward.',
+    question: 'Can the membership be customized to my goals?',
+    answer: 'Yes, plans are designed to support different health goals, lifestyles, and personal preferences.',
   },
   {
     id: 'm4',
-    question: 'Can I use FSA or HSA?',
-    answer: 'You can pay using a standard card and submit for reimbursement if eligible. Coverage and eligibility may vary depending on your plan provider.',
+    question: 'How long does the membership last?',
+    answer: 'Membership duration may vary depending on the selected plan, with flexible options available for ongoing support.',
   },
 ]
 
 const medicationFaqs = [
   {
     id: 'med1',
-    question: 'What weight loss treatment options are available?',
-    answer: 'You may have access to a range of clinically supported GLP-1 treatments designed to help with weight management when combined with lifestyle changes. Options are selected based on your individual needs and eligibility.',
+    question: 'How do weight loss medications work?',
+    answer: 'Weight loss medications may help control appetite, improve metabolism, or support healthier eating habits when combined with lifestyle changes.',
   },
   {
     id: 'med2',
-    question: 'What if I\u2019m already using a GLP-1 treatment?',
-    answer: 'You\u2019ll complete a quick health review so a licensed provider can evaluate your current plan. In many cases, your treatment can continue with minimal disruption, along with ongoing support during the transition.',
+    question: 'Are weight loss medications safe to use?',
+    answer: 'These medications are typically prescribed based on individual health needs and should be used under professional medical guidance.',
   },
   {
     id: 'med3',
-    question: 'Are doctor visits required?',
-    answer: 'In some cases, treatment can be prescribed without a live visit, depending on your location. If needed, scheduling a virtual consultation is simple and convenient.',
+    question: 'Do I need a prescription for treatment?',
+    answer: 'Some treatments may require a prescription after a medical evaluation to ensure they are appropriate for you.',
   },
   {
     id: 'med4',
-    question: 'Who is eligible for treatment?',
-    answer: 'A licensed provider will review your health history, goals, and overall profile to determine if treatment is appropriate for you.',
+    question: 'Can medication be combined with diet and exercise?',
+    answer: 'Yes, medications are usually most effective when paired with healthy eating habits and regular physical activity.',
   },
   {
     id: 'med5',
-    question: 'Are these medications available everywhere?',
-    answer: 'Availability may vary by location, and access is expanding over time.',
+    question: 'How often should I take the medication?',
+    answer: 'Dosage schedules depend on the specific treatment plan and instructions provided by your healthcare provider.',
   },
   {
     id: 'med6',
-    question: 'How long should I stay on treatment?',
-    answer: 'Weight management treatment is typically long-term. Stopping treatment may lead to changes in results, so it\u2019s important to consult a provider before making changes.',
+    question: 'Can I continue treatment if I miss a dose?',
+    answer: 'If you miss a dose, follow the guidance provided with your medication or consult a healthcare professional for advice.',
   },
   {
     id: 'med7',
-    question: 'When can I expect to see results?',
-    answer: 'Results vary from person to person. Progress depends on multiple factors including consistency, lifestyle, and individual response to treatment.',
+    question: 'Will medication alone help me lose weight?',
+    answer: 'Medication can support weight loss, but long-term success usually depends on maintaining healthy lifestyle habits.',
   },
   {
     id: 'med8',
-    question: 'Can my dosage be adjusted?',
-    answer: 'Yes. Providers may adjust your dosage based on your progress and needs. Updates can be requested through the app, and any changes will be guided by a healthcare professional.',
+    question: 'Can medications interact with other treatments?',
+    answer: 'Yes, certain medications may interact with existing prescriptions or supplements, so it’s important to share your medical history.',
   },
 ]
 

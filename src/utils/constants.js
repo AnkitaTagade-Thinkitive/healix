@@ -1,4 +1,4 @@
-export const APP_NAME = 'hims'
+export const APP_NAME = 'healix'
 
 export const BREAKPOINTS = {
   SM: 576,

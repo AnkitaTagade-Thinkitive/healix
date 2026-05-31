@@ -34,7 +34,7 @@ const HowItWorksPage = () => {
         iconSrc={null}
         message={(
           <span style={{ whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            Get in-depth lab testing for less than $1/day
+            Full-body lab testing without the high cost
             <svg
               width="14"
               height="14"
@@ -95,11 +95,11 @@ const HowItWorksPage = () => {
       {/* Hero — "How it works" */}
       <section className="hiw-hero">
         <div className="hiw-hero__inner">
-          <p className="hiw-hero__eyebrow">labs by healix</p>
+          <p className="hiw-hero__eyebrow">Healix Diagnostics</p>
           <h1 className="hiw-hero__heading">How it works</h1>
           <p className="hiw-hero__disclaimer">
             Availability may vary. Eligibility and provider approval may be required. Results are for informational use only and are not a substitute for medical advice, diagnosis, or treatment.{' '}
-            <a href="#" className="hiw-hero__more" aria-disabled="true">Learn more</a>
+            {/* <a href="#" className="hiw-hero__more" aria-disabled="true">Learn more</a> */}
           </p>
         </div>
       </section>
@@ -127,8 +127,8 @@ const HowItWorksPage = () => {
               ))}
             </ul>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Started</button>
-              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">See the biomarkers</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Schedule Today</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">View Screening Details</button>
             </div>
           </div>
 
@@ -149,7 +149,7 @@ const HowItWorksPage = () => {
         <div className="hiw-step__inner">
           <div className="hiw-step__left">
             <span className="hiw-step__pill">Step 2</span>
-            <h2 className="hiw-step__heading">View your health insights</h2>
+            <h2 className="hiw-step__heading">Understand Your Health</h2>
             <ul className="hiw-step__list">
               {[
                 'Understand your results with clear explanations',
@@ -167,7 +167,7 @@ const HowItWorksPage = () => {
               ))}
             </ul>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Explore Insights</button>
             </div>
           </div>
 
@@ -206,8 +206,8 @@ const HowItWorksPage = () => {
               ))}
             </ul>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Started</button>
-              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">View Action Plan</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Take Action Today</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">Discover Your Plan</button>
             </div>
           </div>
 
@@ -228,7 +228,7 @@ const HowItWorksPage = () => {
         <div className="hiw-step__inner">
           <div className="hiw-step__left">
             <span className="hiw-step__pill">Step 4</span>
-            <h2 className="hiw-step__heading">Track your progress</h2>
+            <h2 className="hiw-step__heading">Monitor Your Health</h2>
             <ul className="hiw-step__list">
               {[
                 'Repeat key health tests to monitor changes over time',
@@ -246,7 +246,7 @@ const HowItWorksPage = () => {
               ))}
             </ul>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Start Monitoring</button>
             </div>
           </div>
 
@@ -285,7 +285,7 @@ const HowItWorksPage = () => {
               ))}
             </ul>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Begin Screening</button>
             </div>
           </div>
 
@@ -347,7 +347,7 @@ const HowItWorksPage = () => {
         <div className="hiw-disclaimer__inner">
           <p className="hiw-disclaimer__top">
             Not available in certain regions. Eligibility and provider approval may be required. Lab results are intended for informational purposes only and are not a substitute for medical diagnosis, treatment, or care.{' '}
-            <a href="#" className="hiw-disclaimer__more" aria-disabled="true">Learn more</a>
+            {/* <a href="#" className="hiw-disclaimer__more" aria-disabled="true">Learn more</a> */}
           </p>
           <ol className="hiw-disclaimer__notes">
             <li className="hiw-disclaimer__note">

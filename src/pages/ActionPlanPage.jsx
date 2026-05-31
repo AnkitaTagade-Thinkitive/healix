@@ -77,8 +77,8 @@ const ActionPlanPage = () => {
         </div>
 
         <div className="action-hero__bottom">
-          <button type="button" className="action-hero__btn" aria-disabled="true">Get started</button>
-          <p className="action-hero__note">For illustrative purposes only.</p>
+          <button type="button" className="action-hero__btn" aria-disabled="true">Let’s Begin</button>
+          {/* <p className="action-hero__note">For illustrative purposes only.</p> */}
         </div>
       </section>
 
@@ -87,7 +87,7 @@ const ActionPlanPage = () => {
         <div className="action-disclaimer__inner">
           <p className="action-disclaimer__text">
             Not available in certain regions. Eligibility and provider approval may be required. Lab results are for informational use only and are not intended to diagnose, treat, or cure any condition.{' '}
-            <a href="#" className="action-disclaimer__link" aria-disabled="true">Learn more</a>
+            {/* <a href="#" className="action-disclaimer__link" aria-disabled="true">Learn more</a> */}
           </p>
           <p className="action-disclaimer__text">
             Care plans are developed by medical professionals and may include personalized recommendations to support your health. Providers may contact you if important results are identified, and plans can include ongoing access to provider messaging.
@@ -109,7 +109,7 @@ const ActionPlanPage = () => {
               Your results come with clear next steps to help you improve the areas that matter most.
             </p>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Start Here</button>
             </div>
           </div>
 
@@ -131,15 +131,15 @@ const ActionPlanPage = () => {
           <div className="hiw-step__left">
             <span className="hiw-step__pill hiw-step__pill--num">02</span>
             <h2 className="hiw-step__heading">
-              Personalized guidance
+              Expert Insights for
               <br />
-              tailored to your results
+             Better Wellness
             </h2>
             <p className="ap-step__desc">
               Take steps to improve your health with lifestyle recommendations and, when appropriate, treatment options.
             </p>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Insights</button>
             </div>
           </div>
 
@@ -169,7 +169,7 @@ const ActionPlanPage = () => {
               After a simple assessment, providers may recommend treatment based on your results, medical history, and health goals.
             </p>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Check Eligibility</button>
             </div>
             <p className="ap-step__fineprint">
               Compounded medications are not formally evaluated for safety, effectiveness, or quality. A valid prescription is required.
@@ -193,12 +193,12 @@ const ActionPlanPage = () => {
         <div className="hiw-step__inner">
           <div className="hiw-step__left">
             <span className="hiw-step__pill hiw-step__pill--num">04</span>
-            <h2 className="hiw-step__heading">Track your progress over time</h2>
+            <h2 className="hiw-step__heading">Understand Your Health Trends</h2>
             <p className="ap-step__desc">
               Monitor changes in your health with regular follow-up testing, with additional tests included in select plans.
             </p>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Track Progress</button>
             </div>
             <p className="ap-step__fineprint ap-step__fineprint--light">
               Extra lab testing may be included with certain treatment plans.
@@ -223,15 +223,15 @@ const ActionPlanPage = () => {
           <div className="hiw-step__left">
             <span className="hiw-step__pill hiw-step__pill--num">05</span>
             <h2 className="hiw-step__heading">
-              Continuous care,
+             Your Wellness Team,
               <br />
-              included in your plan
+              Always Here
             </h2>
             <p className="ap-step__desc">
-              Stay connected with licensed providers for guidance, support, and answers whenever you need them.
+              Connect with experienced providers for personalized answers, recommendations, and wellness support.
             </p>
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get Support</button>
             </div>
           </div>
 
@@ -261,7 +261,7 @@ const ActionPlanPage = () => {
               <h2 className="labs-sf__heading-bottom">supported at every step</h2>
             </div>
             <div className="ap-sf__bottom">
-              <button type="button" className="labs-sf__btn" aria-disabled="true">Get started</button>
+              <button type="button" className="labs-sf__btn" aria-disabled="true">Start Progress</button>
               <p className="ap-sf__note">
                 Compounded medications are not formally evaluated for safety, effectiveness, or quality. A valid prescription is required.
               </p>

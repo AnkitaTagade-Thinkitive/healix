@@ -4,9 +4,9 @@ import './LabsOffcanvas.scss'
 
 const exploreLinks = [
   'Labs',
-  '130+ Health signals tested',
-  'Areas of the body tested',
-  'Hims Multi-Cancer Test by Galleri\u00ae',
+  'Key Health Metrics',
+  'What We Analyze',
+  'Advanced Cancer Screening',
 ]
 
 const ChevronRight = () => (
@@ -32,14 +32,11 @@ const LabsOffcanvas = ({ isOpen, onClose, from }) => {
 
   const handleBack = () => {
     onClose()
-
-    // Reopen the main sidebar after the offcanvas finishes closing.
-    // The sidebar is mounted globally so it appears on whichever page
-    // the user is currently on — no navigation needed.
-    const menu = from || 'main'
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('reopen-sidebar', { detail: { menu } }))
-    }, 350)
+    // Close the underlying sidebar at the same time so both layered
+    // panels slide out together rather than in two visible steps.
+    if (from) {
+      window.dispatchEvent(new Event('close-sidebar'))
+    }
   }
 
   useEffect(() => {
@@ -92,7 +89,7 @@ const LabsOffcanvas = ({ isOpen, onClose, from }) => {
           {/* Hero Card */}
           <div className="labs-oc__hero">
             <img src="/images/h-Labs-Nav-D.webp" alt="" className="labs-oc__hero-img"  loading="lazy" decoding="async"/>
-            <button type="button" className="labs-oc__hero-text" aria-disabled="true">Start testing today</button>
+            <button type="button" className="labs-oc__hero-text" aria-disabled="true">Better Health Starts Here</button>
             <button type="button" className="labs-oc__hero-btn" aria-label="Start testing today" aria-disabled="true">
               <ArrowRight />
             </button>
@@ -102,30 +99,35 @@ const LabsOffcanvas = ({ isOpen, onClose, from }) => {
           <div className="labs-oc__section">
             <span className="labs-oc__label">EXPLORE</span>
             <div className="labs-oc__card">
-              {exploreLinks.map((item) => (
-                <button
-                  key={item}
-                  className="labs-oc__item"
-                  onClick={() => {
-                    if (item === 'Labs') {
-                      onClose()
-                      navigate('/labs')
-                    } else if (
-                      item === '130+ Health signals tested' ||
-                      item === 'Areas of the body tested'
-                    ) {
-                      onClose()
-                      navigate('/labs/what-we-test')
-                    } else if (item === 'Hims Multi-Cancer Test by Galleri\u00ae') {
-                      onClose()
-                      navigate('/labs/cancer-screening')
-                    }
-                  }}
-                >
-                  <span>{item}</span>
-                  <ChevronRight />
-                </button>
-              ))}
+              {exploreLinks.map((item) => {
+                // Synchronous helper — runs every state flip in the
+                // SAME React batch so the labs offcanvas slide-out and
+                // the underlying sidebar slide-out start in the SAME
+                // animation frame. `navigate()` is called last so the
+                // route change effect (`prevPathRef`) sees both layers
+                // already closing and doesn't re-trigger them.
+                const goTo = (path) => {
+                  if (from) {
+                    window.dispatchEvent(new Event('close-sidebar'))
+                  }
+                  onClose()
+                  navigate(path)
+                }
+                return (
+                  <button
+                    key={item}
+                    className="labs-oc__item"
+                    onClick={() => {
+                      if (item === 'Labs') goTo('/labs')
+                      else if (item === 'Key Health Metrics' || item === 'What We Analyze') goTo('/labs/what-we-test')
+                      else if (item === 'Advanced Cancer Screening') goTo('/labs/cancer-screening')
+                    }}
+                  >
+                    <span>{item}</span>
+                    <ChevronRight />
+                  </button>
+                )
+              })}
             </div>
           </div>
         </div>

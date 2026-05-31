@@ -18,48 +18,48 @@ const navLinks = [
 const labsFaqs = [
   {
     id: 1,
-    q: 'Who is Labs recommended for?',
-    a: "Labs by Hims is a good fit for those looking for a holistic picture of their health that goes beyond a traditional doctor\u2019s office\u2014and that provides a clear path forward. You must be 18 or older to purchase a Labs plan, if eligible.",
+    q: 'Can lab testing help detect early health issues?',
+    a: "Yes, routine lab testing can help identify potential health concerns before symptoms become serious.",
   },
   {
     id: 2,
-    q: 'How does the lab testing process work?',
-    a: "After checking out with a lab testing plan through Hims, you\u2019ll book your first blood draw appointment at a Quest Diagnostics location near you. Your first draw will test 75+ biomarkers. You\u2019ll learn your current baseline and uncover which areas of your health need attention. You\u2019ll get expert guidance in the Hers app about your results, where you can also take action with lifestyle guidance and personalized treatment plans, if eligible. You\u2019ll continue to track your progress with twice-yearly panels; your 6-month follow-up will retest 55+ biomarkers.",
+    q: 'Are the testing procedures safe and hygienic?',
+    a: "Absolutely. All sample collections follow strict medical safety and sanitation standards.",
   },
   {
     id: 3,
-    q: 'Do I need to visit a lab in person?',
-    a: "You\u2019ll book an in-person appointment to take your lab test at one of 2,000 Quest Diagnostics locations nationwide directly through the Hims app.",
+    q: 'What should I do before my scheduled test?',
+    a: "You may receive preparation guidelines such as hydration, fasting, or medication instructions depending on the selected test.",
   },
   {
     id: 4,
-    q: 'What do the plans test for?',
-    a: 'Your lab panels are processed by Quest Diagnostics and include 130+ biomarker tests. They span 10 vital health areas, like heart health, hormone health, metabolism, inflammation, and stress.',
+    q: 'Are these lab services suitable for ongoing health monitoring?',
+    a: 'Yes, many users regularly use lab testing to track improvements and maintain long-term wellness.',
   },
   {
     id: 5,
-    q: 'Are video visits with a doctor required?',
-    a: 'No, a video visit with a healthcare provider is not required for Labs.',
+    q: 'Is the sample collection process quick?',
+    a: 'Most sample collections are completed within a few minutes by trained professionals.',
   },
   {
     id: 6,
-    q: 'Is insurance required?',
-    a: "Insurance isn\u2019t required, so there are no complicated insurance questions or health insurance plan considerations.",
+    q: 'Can I manage my appointments online?',
+    a: "Yes, appointments, reports, and test history can all be managed conveniently through the platform.",
   },
 ]
 
 const compareRows = [
-  { label: 'Lab tests per year', hims: '130+', routine: '~25' },
-  { label: 'Retest every 6 months', hims: true, routine: false },
-  { label: 'Personalized Action Plan', hims: true, routine: false },
-  { label: 'No insurance required', hims: true, routine: false },
-  { label: 'Clear results in the app', hims: true, routine: false },
-  { label: 'Provider follow-ups, 100% online', hims: true, routine: false },
-  { label: 'Biological Age insights', hims: true, routine: false },
-  { label: 'Inflammation and stress markers', hims: true, routine: false },
-  { label: 'Enhanced hormone and thyroid testing', hims: true, routine: false },
-  { label: 'Enhanced metabolic and lipid testing', hims: true, routine: false },
-  { label: 'Nutrient and electrolyte testing', hims: true, routine: false },
+  { label: 'Tests included annually', healix: '120+', routine: '~20' },
+  { label: 'Ongoing health monitoring', healix: true, routine: false },
+  { label: 'Personalized wellness insights', healix: true, routine: false },
+  { label: 'Digital lab reports', healix: true, routine: false },
+  { label: 'Preventive health screening', healix: true, routine: false },
+  { label: 'Hormone health analysis', healix: true, routine: false },
+  { label: 'Heart health markers', healix: true, routine: false },
+  { label: 'Vitamin & nutrient analysis', healix: true, routine: false },
+  { label: 'Metabolic wellness testing', healix: true, routine: false },
+  { label: 'Thyroid function screening', healix: true, routine: false },
+  { label: 'Inflammation tracking', healix: true, routine: false },
 ]
 
 const LabsPage = () => {
@@ -144,7 +144,7 @@ const LabsPage = () => {
               decoding="async"
             />
           </div>
-          <button className="labs-hero__btn" type="button" aria-disabled="true">Start testing</button>
+          <button className="labs-hero__btn" type="button" aria-disabled="true">Begin Screening</button>
         </div>
       </section>
 
@@ -161,7 +161,7 @@ const LabsPage = () => {
           </picture>
           <p className="labs-stats__disclaimer">
             Not offered in all locations. Eligibility criteria and a provider&rsquo;s approval may be required. Test results are for informational purposes only and should not replace professional medical advice.{' '}
-            <a href="#" className="labs-stats__more" aria-disabled="true">Learn more</a>
+            {/* <a href="#" className="labs-stats__more" aria-disabled="true">Learn more</a> */}
           </p>
         </div>
       </section>
@@ -184,8 +184,8 @@ const LabsPage = () => {
              loading="lazy" decoding="async"/>
           </picture>
           <div className="labs-peace__actions">
-            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Start testing</button>
-            <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">How it works</button>
+            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Take a Health Test</button>
+            <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">Explore the Process</button>
           </div>
         </div>
       </section>
@@ -210,7 +210,7 @@ const LabsPage = () => {
              loading="lazy" decoding="async"/>
           </picture>
           <div className="labs-peace__actions">
-            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">See all health signals tested</button>
+            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Track your wellness indicators</button>
           </div>
         </div>
       </section>
@@ -227,16 +227,16 @@ const LabsPage = () => {
           </div>
           <div className="labs-conditions__right">
             <h2 className="labs-conditions__heading">
-              Detect early warning signs across
+              Early detection for
               <br />
-              <span className="labs-conditions__heading--gradient">1,000+ health conditions</span>
+              <span className="labs-conditions__heading--gradient">better health outcomes</span>
             </h2>
             <p className="labs-conditions__subtext">
               Spot imbalances early&mdash;before noticeable symptoms develop&mdash;through advanced lab analysis.
             </p>
             <div className="labs-conditions__actions">
-              <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Start testing</button>
-              <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">What we test</button>
+              <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Begin Screening</button>
+              <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">Discover Our Tests</button>
             </div>
           </div>
         </div>
@@ -264,8 +264,8 @@ const LabsPage = () => {
               ))}
             </ul>
             <div className="labs-action__actions">
-              <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Start testing</button>
-              <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">View your plan</button>
+              <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Begin Screening</button>
+              <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">Explore Your Plan</button>
             </div>
           </div>
           <div className="labs-action__right">
@@ -287,19 +287,19 @@ const LabsPage = () => {
             <span className="labs-compare__heading--gradient">without the high cost</span>
           </h2>
 
-          <div className="labs-compare__table" role="table" aria-label="Labs by Hims vs routine labwork">
+          <div className="labs-compare__table" role="table" aria-label="Labs by healix vs routine labwork">
             <div className="labs-compare__headrow" role="row">
               <div className="labs-compare__cell labs-compare__cell--label" role="columnheader" />
-              <div className="labs-compare__cell labs-compare__cell--hims" role="columnheader">Labs by Healix</div>
+              <div className="labs-compare__cell labs-compare__cell--healix" role="columnheader">Labs by Healix</div>
               <div className="labs-compare__cell labs-compare__cell--routine" role="columnheader">Routine labwork</div>
             </div>
 
             {compareRows.map((row) => (
               <div key={row.label} className="labs-compare__row" role="row">
                 <div className="labs-compare__cell labs-compare__cell--label" role="cell">{row.label}</div>
-                <div className="labs-compare__cell labs-compare__cell--hims" role="cell">
-                  {typeof row.hims === 'string' ? (
-                    <span className="labs-compare__value">{row.hims}</span>
+                <div className="labs-compare__cell labs-compare__cell--healix" role="cell">
+                  {typeof row.healix === 'string' ? (
+                    <span className="labs-compare__value">{row.healix}</span>
                   ) : (
                     <span className="labs-compare__check" aria-label="Included">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7" /></svg>
@@ -320,7 +320,7 @@ const LabsPage = () => {
           </div>
 
           <div className="labs-compare__cta">
-            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Start testing</button>
+            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Begin Screening</button>
           </div>
         </div>
       </section>
@@ -330,9 +330,9 @@ const LabsPage = () => {
         <div className="labs-cancer__inner">
           <span className="labs-cancer__badge">Advanced multi-cancer screening</span>
           <h2 className="labs-cancer__heading">
-            Check for 50+ types of cancer
+            Enhance your wellness plan with
             <br />
-            <span className="labs-cancer__heading--gradient">with a single test</span>
+            <span className="labs-cancer__heading--gradient">advanced diagnostic testing.</span>
           </h2>
           <p className="labs-cancer__sub">
             Go beyond routine testing with a more comprehensive screening option, all from one simple blood draw included in your lab plan.
@@ -352,13 +352,13 @@ const LabsPage = () => {
           </div>
 
           <div className="labs-cancer__actions">
-            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Get Started</button>
-            <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">Learn more</button>
+            <button type="button" className="labs-peace__btn labs-peace__btn--primary" aria-disabled="true">Begin Your Journey</button>
+            <button type="button" className="labs-peace__btn labs-peace__btn--secondary" aria-disabled="true">Discover More</button>
           </div>
 
           <p className="labs-cancer__disclaimer">
             Availability may vary by location. Eligibility and a valid prescription may be required. This test has not been approved by the FDA and is generally intended for individuals at higher risk of cancer, including adults aged 50 and above.{' '}
-            <a href="#" className="labs-cancer__more" aria-disabled="true">Learn more</a>
+            {/* <a href="#" className="labs-cancer__more" aria-disabled="true">Learn more</a> */}
           </p>
         </div>
       </section>
@@ -390,11 +390,10 @@ const LabsPage = () => {
           </picture>
 
           <p className="labs-holistic__disclaimer">
-            Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA. Rx required.
-            <br /><br />
-            4 As of August 1, 2025<br />
-            5 Based on data from nearly 2,400 surveyed customers.{' '}
-            <a href="#" className="labs-holistic__more" aria-disabled="true">Source</a>
+            Testing and treatment options are subject to medical review and availability.
+            
+            .{' '}
+            {/* <a href="#" className="labs-holistic__more" aria-disabled="true">Source</a> */}
           </p>
 
           <button type="button" className="labs-peace__btn labs-peace__btn--primary labs-holistic__cta" aria-disabled="true">Start testing</button>
@@ -447,9 +446,11 @@ const LabsPage = () => {
           <div className="labs-sf__content">
             <div className="labs-sf__top-text">
               <h2 className="labs-sf__heading-top">Healthy living</h2>
-              <h2 className="labs-sf__heading-bottom">starts at your core</h2>
             </div>
-            <button type="button" className="labs-sf__btn" aria-disabled="true">Start testing</button>
+            <div className="labs-sf__cta-group">
+              <h2 className="labs-sf__heading-bottom">starts at your core</h2>
+              <button type="button" className="labs-sf__btn" aria-disabled="true">Start testing</button>
+            </div>
           </div>
         </div>
       </section>

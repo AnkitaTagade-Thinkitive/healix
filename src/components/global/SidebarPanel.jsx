@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 /**
@@ -73,7 +73,7 @@ const sexualAccessories = [
   'Ultra Thin Condoms',
 ]
 const sexualTopTreatments = [
-  { name: 'Hard Mints\u2122 by Hims', img: '/images/product_wegovy-pill.png', rx: true },
+  { name: 'Hard Mints\u2122 by healix', img: '/images/product_wegovy-pill.png', rx: true },
   { name: 'Viagra\u00ae', sub: '(Sildenafil Citrate)', img: '/images/product_wegovy-pill.png', rx: true },
 ]
 const sexualPopularReads = [
@@ -112,7 +112,41 @@ const BackIcon = () => (
  */
 const SidebarPanel = ({ seedMenu = 'main' }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true) // armed by parent
-  const [activeMenu, setActiveMenu] = useState(seedMenu)
+  // ── Layered state ─────────────────────────────────────────────────
+  // The sidebar is two layers stacked:
+  //   baseMenu   = which base is visible behind everything (main | wl-rich)
+  //   panelOpen  = which sub-panel is currently slid over the base
+  //                (null | 'weight-sub' | 'sexual-sub')
+  // Keeping them separate means opening or closing a panel never
+  // unmounts the base — eliminating the "blank black flash" that the
+  // old single-`activeMenu` flow produced when wl-rich had to be torn
+  // down before a panel could slide in.
+  const [baseMenu, setBaseMenu] = useState(
+    seedMenu === 'wl-rich' ? 'wl-rich' : 'main'
+  )
+  const [panelOpen, setPanelOpen] = useState(
+    seedMenu === 'weight-sub' || seedMenu === 'sexual-sub' ? seedMenu : null
+  )
+  // Derived for places that still want a single "current view" value.
+  const activeMenu = panelOpen || baseMenu
+
+  // Backward-compat wrapper — translates legacy `setActiveMenu(x)` calls.
+  // - panel values ('weight-sub' / 'sexual-sub') open that panel.
+  // - 'main' closes any open panel WITHOUT touching the base (so a
+  //   back tap returns to whichever base the user came from).
+  // - 'wl-rich' clears panels and flips the base.
+  const setActiveMenu = useCallback((next) => {
+    if (next === 'weight-sub' || next === 'sexual-sub') {
+      setPanelOpen(next)
+    } else if (next === 'wl-rich') {
+      setPanelOpen(null)
+      setBaseMenu('wl-rich')
+    } else {
+      // 'main' or anything else → close panel, keep base.
+      setPanelOpen(null)
+    }
+  }, [])
+
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -122,31 +156,69 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
     location.pathname === '/faqs' ||
     location.pathname === '/science'
 
+  // Apply a menu choice from an external event to the layered state.
+  const applyExternalMenu = useCallback((menu) => {
+    if (menu === 'weight-sub' || menu === 'sexual-sub') {
+      // Keep the base as-is (wl-rich on WL pages, otherwise main); just
+      // open the panel.
+      setPanelOpen(menu)
+    } else if (menu === 'wl-rich') {
+      setBaseMenu('wl-rich')
+      setPanelOpen(null)
+    } else {
+      setBaseMenu('main')
+      setPanelOpen(null)
+    }
+  }, [])
+
   // Default the rich sidebar for the WL pages; any explicit `open-sidebar`
   // dispatch with a menu in the detail wins over this.
   useEffect(() => {
     const openHandler = (e) => {
       const menu = (e && e.detail && e.detail.menu) || (isWeightLoss ? 'wl-rich' : 'main')
-      setActiveMenu(menu)
+      applyExternalMenu(menu)
       setSidebarOpen(true)
     }
     const reopenHandler = (e) => {
       const menu = (e && e.detail && e.detail.menu) || 'main'
-      setActiveMenu(menu)
+      applyExternalMenu(menu)
       setSidebarOpen(true)
+    }
+    // External signal — fired by overlay offcanvases (Labs, WL) when
+    // the user hits their back button. Lets the sidebar slide out at
+    // the SAME time as the layered offcanvas instead of leaking behind.
+    const closeHandler = () => {
+      setSidebarOpen(false)
+      setPanelOpen(null)
     }
     window.addEventListener('open-sidebar', openHandler)
     window.addEventListener('reopen-sidebar', reopenHandler)
+    window.addEventListener('close-sidebar', closeHandler)
     return () => {
       window.removeEventListener('open-sidebar', openHandler)
       window.removeEventListener('reopen-sidebar', reopenHandler)
+      window.removeEventListener('close-sidebar', closeHandler)
     }
-  }, [isWeightLoss])
+  }, [isWeightLoss, applyExternalMenu])
 
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [sidebarOpen])
+
+  // Close the sidebar (and any open panel) whenever the route actually
+  // changes. This lets the layered navigation flow finish naturally:
+  // the user clicks a link → React Router updates the path → this
+  // effect collapses everything so the next page renders cleanly.
+  // First-mount comparison via ref so we don't close on initial open.
+  const prevPathRef = useRef(location.pathname)
+  useEffect(() => {
+    if (prevPathRef.current !== location.pathname) {
+      setSidebarOpen(false)
+      setPanelOpen(null)
+      prevPathRef.current = location.pathname
+    }
+  }, [location.pathname])
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') setSidebarOpen(false)
@@ -160,7 +232,8 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
 
   const closeSidebar = () => {
     setSidebarOpen(false)
-    setActiveMenu('main')
+    // Close any open panel so reopening starts from the base.
+    setPanelOpen(null)
   }
 
   return (
@@ -176,7 +249,11 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
         className={`sidebar ${sidebarOpen ? 'sidebar--open' : ''}`}
         aria-label="Main navigation"
       >
-        {(activeMenu === 'main' || activeMenu === 'weight-sub' || activeMenu === 'sexual-sub') && (
+        {/* Main base content — header + EXPLORE — only rendered when
+            the base is actually `main`. The sub-panels are rendered
+            below as top-level siblings so they stay mounted across
+            base switches and slide cleanly without flicker. */}
+        {baseMenu === 'main' && (
           <>
             <div className="sidebar__header">
               <span className="sidebar__title">Menu</span>
@@ -203,8 +280,9 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                             setActiveMenu('sexual-sub')
                           } else if (link.label === 'Labs') {
                             e.preventDefault()
-                            closeSidebar()
-                            setTimeout(() => window.dispatchEvent(new CustomEvent('open-labs-offcanvas', { detail: { from: 'main' } })), 400)
+                            // Open the Labs offcanvas directly on top of
+                            // the current sidebar — no close/reopen dance.
+                            window.dispatchEvent(new CustomEvent('open-labs-offcanvas', { detail: { from: 'main' } }))
                           } else {
                             closeSidebar()
                           }
@@ -218,15 +296,20 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                 </ul>
               </nav>
             </div>
+          </>
+        )}
 
-            <div
-              className="sidebar__panel"
-              style={{
-                transform: activeMenu === 'weight-sub' ? 'translateX(0)' : 'translateX(100%)',
-              }}
-            >
+        {/* Sub-panels — top-level siblings of the base layers, so they
+            stay mounted while the sidebar is open and slide cleanly
+            over wl-rich or main with no unmount/remount flicker. */}
+        <div
+          className="sidebar__panel"
+          style={{
+            transform: panelOpen === 'weight-sub' ? 'translateX(0)' : 'translateX(100%)',
+          }}
+        >
               <div className="sidebar__header sidebar__header--panel">
-                <button className="sidebar__close" onClick={() => setActiveMenu('main')} aria-label="Back">
+                <button className="sidebar__close" onClick={() => setPanelOpen(null)} aria-label="Back">
                   <BackIcon />
                 </button>
                 <span className="sidebar__title">Weight Loss</span>
@@ -272,15 +355,15 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
               </div>
             </div>
 
-            {/* Sexual Health sub-menu panel (slides over the main list) */}
+            {/* Sexual Health sub-menu panel (slides over whichever base is active) */}
             <div
               className="sidebar__panel sexual-sub"
               style={{
-                transform: activeMenu === 'sexual-sub' ? 'translateX(0)' : 'translateX(100%)',
+                transform: panelOpen === 'sexual-sub' ? 'translateX(0)' : 'translateX(100%)',
               }}
             >
               <div className="sidebar__header sidebar__header--panel">
-                <button className="sidebar__close" onClick={() => setActiveMenu('main')} aria-label="Back">
+                <button className="sidebar__close" onClick={() => setPanelOpen(null)} aria-label="Back">
                   <BackIcon />
                 </button>
                 <span className="sidebar__title">Sexual Health</span>
@@ -419,10 +502,8 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                 </div>
               </div>
             </div>
-          </>
-        )}
 
-        {activeMenu === 'wl-rich' && (
+        {baseMenu === 'wl-rich' && (
           <div className="sidebar-wl">
             <div className="sidebar-wl__header">
               <span className="sidebar-wl__title">Menu</span>
@@ -449,17 +530,18 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
                       aria-disabled={link.disabled ? 'true' : undefined}
                       onClick={() => {
                         if (link.label === 'Weight Loss') {
-                          closeSidebar()
-                          setTimeout(() => window.dispatchEvent(new CustomEvent('open-wl-offcanvas', { detail: { from: 'wl-rich' } })), 400)
+                          // Layer the WL offcanvas over the sidebar
+                          // directly — no close/reopen slide.
+                          window.dispatchEvent(new CustomEvent('open-wl-offcanvas', { detail: { from: 'wl-rich' } }))
                         } else if (link.label === 'Labs') {
-                          closeSidebar()
-                          setTimeout(() => window.dispatchEvent(new CustomEvent('open-labs-offcanvas', { detail: { from: 'wl-rich' } })), 400)
+                          // Layer the Labs offcanvas over the sidebar.
+                          window.dispatchEvent(new CustomEvent('open-labs-offcanvas', { detail: { from: 'wl-rich' } }))
                         } else if (link.label === 'Sexual Health') {
-                          // Mount the main-menu tree first (panel starts at
-                          // translateX(100%)) then flip to sexual-sub on the
-                          // next frame so the slide-in animation plays.
-                          setActiveMenu('main')
-                          requestAnimationFrame(() => setActiveMenu('sexual-sub'))
+                          // Panel is always mounted (rendered outside the
+                          // base conditionals) so it can slide directly
+                          // over wl-rich — no main-menu intermediate step
+                          // and no unmount/remount flicker.
+                          setPanelOpen('sexual-sub')
                         } else {
                           closeSidebar()
                         }

@@ -44,7 +44,7 @@ const wegovyAssessmentConfig = {
       'Plans built for progress',
     ],
     ctaLabel: 'Get my plan',
-    productsHeading: 'With Hims, you\u2019ve got options',
+    productsHeading: 'With healix, you\u2019ve got options',
     products: [
       {
         name: 'GLP-1 Pill',

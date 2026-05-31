@@ -941,7 +941,7 @@
     font-weight: 550;
   }
 
-  &--hims {
+  &--healix {
     font-weight: 600;
     text-align: center;
   }
@@ -952,7 +952,7 @@
   }
 }
 
-.labs-compare__headrow .labs-compare__cell--hims,
+.labs-compare__headrow .labs-compare__cell--healix,
 .labs-compare__headrow .labs-compare__cell--routine {
   font-size: clamp(13px, 1.3vw, 15px);
   font-weight: 600;
@@ -1022,7 +1022,7 @@
       line-height: 1.35;
     }
 
-    &--hims,
+    &--healix,
     &--routine {
       font-size: 13px;
     }
@@ -1537,14 +1537,34 @@
   text-align: center;
 }
 
+// Bottom CTA group: places `.labs-sf__heading-bottom` directly above
+// the button. The parent `.labs-sf__content` uses
+// `justify-content: space-between`, so this group is pinned to the
+// bottom of the section.
+.labs-sf__cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  text-align: center;
+}
+
 .labs-sf__heading-top {
   font-family: $font-primary;
   font-size: clamp(28px, 5vw, 56px);
   font-weight: 500;
   color: #fff;
   line-height: 1.15;
-  margin: 0;
+  margin: -24px 0 0;
   letter-spacing: -0.02em;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    margin: -49px 0 0;
+  }
+
+  @media (min-width: 1025px) {
+    margin: -65px 0 0;
+  }
 }
 
 .labs-sf__heading-bottom {

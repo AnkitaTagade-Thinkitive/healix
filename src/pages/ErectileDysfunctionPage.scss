@@ -36,6 +36,12 @@
   @media (min-width: 1280px) {
     padding: 0 80px 48px;
   }
+
+  @media (min-width: 1280px) and (max-width: 1336px) {
+    
+    width: 108%;
+
+}
 }
 
 .ed-hero__inner {

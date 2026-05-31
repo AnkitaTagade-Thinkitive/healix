@@ -307,7 +307,7 @@ const WegovySpotlight = () => {
               <div className="wegovy__member-glow" />
               <img
                 src="/images/h-hp-membership.png"
-                alt="Hims membership benefits"
+                alt="healix membership benefits"
                 className="wegovy__member-img"
                 loading="lazy"
                decoding="async"/>

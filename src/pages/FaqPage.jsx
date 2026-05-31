@@ -7,7 +7,7 @@ const FaqPage = () => {
       {/* Hero */}
       <section className="faq-page__hero">
         <div className="faq-page__hero-content">
-          <span className="faq-page__label">Weight Loss by Healix</span>
+          <span className="faq-page__label">Weight Wellness</span>
           <h1 className="faq-page__heading">FAQs</h1>
         </div>
       </section>

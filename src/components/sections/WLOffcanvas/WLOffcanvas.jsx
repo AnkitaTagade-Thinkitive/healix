@@ -49,8 +49,10 @@ const WLOffcanvas = ({ isOpen, onClose, from }) => {
       return
     }
     onClose()
+    // Close the underlying sidebar at the same time so both layered
+    // panels slide out together rather than in two visible steps.
     if (from) {
-      setTimeout(() => window.dispatchEvent(new CustomEvent('reopen-sidebar', { detail: { menu: from } })), 350)
+      window.dispatchEvent(new Event('close-sidebar'))
     }
   }
 
@@ -130,15 +132,23 @@ const WLOffcanvas = ({ isOpen, onClose, from }) => {
                     className="wl-oc__item"
                     aria-disabled={item === 'Calculate Your Body Mass Index' ? 'true' : undefined}
                     onClick={() => {
+                      // Close BOTH layered offcanvases in the SAME
+                      // synchronous tick so they slide out in lock-step.
+                      // navigate() is called last so the route-change
+                      // watcher sees both layers already mid-exit.
+                      const goTo = (path) => {
+                        if (from) {
+                          window.dispatchEvent(new Event('close-sidebar'))
+                        }
+                        onClose()
+                        navigate(path)
+                      }
                       if (item === 'Weight Loss Treatments') {
-                        onClose()
-                        navigate('/weight-loss')
+                        goTo('/weight-loss')
                       } else if (item === 'Membership') {
-                        onClose()
-                        navigate('/membership')
+                        goTo('/membership')
                       } else if (item === 'The Science') {
-                        onClose()
-                        navigate('/science')
+                        goTo('/science')
                       }
                     }}
                   >

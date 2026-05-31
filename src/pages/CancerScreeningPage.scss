@@ -534,6 +534,36 @@
     height: 580px;
   }
 
+  // ── Third card readability overlay ──────────────────────────────
+  // The third card ("Possible origin is determined") has a bright
+  // central body-glow that washes out the white text. Layer two soft
+  // dark gradients over the image but BELOW the text (the title/text
+  // sit at z-index 2). One fade darkens the top-left behind the
+  // heading, the other darkens the bottom behind the paragraph; the
+  // centre stays clear so the green glow remains visible. `inset: 0`
+  // + `pointer-events: none` keeps the overlay non-interactive and
+  // respecting the card's border-radius (clipped by `overflow: hidden`).
+  &:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.4)  28%,
+        rgba(0, 0, 0, 0)    55%
+      ),
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.78) 0%,
+        rgba(0, 0, 0, 0.5)  18%,
+        rgba(0, 0, 0, 0.2)  35%,
+        rgba(0, 0, 0, 0)    52%
+      );
+  }
 }
 
 .cs-science__card-title {

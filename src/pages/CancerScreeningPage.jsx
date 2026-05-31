@@ -18,25 +18,21 @@ const navLinks = [
 
 const faqs = [
   {
-    q: 'What is the multi-cancer blood test?',
+    q: 'What is a multi-cancer screening test?',
     a: [
-      'This test is an annual screening that analyzes DNA fragments in your blood to look for signals associated with multiple cancer types. It helps identify potential concerns early, even before symptoms appear.',
-      'If a signal is detected, the test can indicate the most likely area in the body where it may have started.',
-      'This test does not detect all cancers and is not a diagnostic tool. Results may include false positives or false negatives. It should be used alongside recommended medical screenings.',
+      'A multi-cancer screening test is an advanced blood test designed to detect potential cancer-related signals across multiple cancer types at an early stage.',
     ],
   },
   {
-    q: 'Why consider this test?',
+    q: 'How does the screening process work?',
     a: [
-      'Some cancers can develop without noticeable symptoms and may not be detected through routine screenings. Early identification can help improve outcomes by allowing timely follow-up and care.',
-      'This test offers an additional layer of insight into your health.',
+      'The process involves a simple blood draw that is analyzed for specific biological signals associated with certain cancers.',
     ],
   },
   {
-    q: 'How is the test performed?',
+    q: 'Why should I consider preventive cancer screening?',
     a: [
-      'The test is completed through a simple blood draw, typically once a year. The process is quick and similar to standard lab testing.',
-      'You can schedule your appointment at a nearby lab location and receive updates when your results are ready.',
+      'Early screening may help identify potential health concerns before symptoms appear, supporting proactive healthcare decisions.',
     ],
   },
   {
@@ -48,30 +44,25 @@ const faqs = [
   {
     q: 'Is this test used to diagnose cancer?',
     a: [
-      'No. This is a screening tool. If a signal is found, additional diagnostic testing is needed to confirm any condition.',
-      'Results may not always be accurate, and further evaluation is important.',
+      'No. The screening is intended to identify possible signals that may require additional medical evaluation or follow-up testing.',
     ],
   },
   {
-    q: 'Can this test predict future cancer risk?',
+    q: 'How long does it take to receive results?',
     a: [
-      'No. The test reflects your current health at the time of screening and does not assess genetic risk or predict future conditions.',
+      'Results are typically delivered digitally after laboratory processing is complete, though timing may vary.',
     ],
   },
   {
-    q: 'What happens when I receive my results?',
+    q: 'What happens if a signal is detected?',
     a: [
-      'You will be notified once your results are available.',
-      'Results will typically indicate either:',
+      'If a signal is identified, healthcare professionals may recommend additional screening or diagnostic steps for further evaluation.',
     ],
-    list: ['Signal detected', 'No signal detected'],
-    after: 'If a signal is found, a healthcare provider may guide you on next steps.',
   },
   {
-    q: 'What should I do if a signal is detected?',
+    q: 'What does a “No Signal Detected” result mean?',
     a: [
-      'A detected signal does not confirm cancer. It means further testing may be needed.',
-      'A provider will help you understand your results and recommend appropriate follow-up care.',
+      'It means the screening did not identify concerning signals at the time of testing, though regular preventive care is still important.',
     ],
   },
   {
@@ -88,15 +79,15 @@ const faqs = [
     ],
   },
   {
-    q: 'Do I need insurance?',
+    q: 'Is special preparation required before testing?',
     a: [
-      'No. Insurance is not required to access this test.',
+      'Most screenings require minimal preparation, making the process simple and convenient.',
     ],
   },
   {
-    q: 'How do I get started?',
+    q: 'Where can I complete the screening?',
     a: [
-      'You can add the test to your plan after completing eligibility steps, then schedule your lab appointment at a convenient location.',
+      'Testing may be available through partnered laboratories or approved healthcare locations.',
     ],
   },
 ]
@@ -160,7 +151,7 @@ const CancerScreeningPage = () => {
           <p className="cs-hero__sub">
             Use a single blood test to screen for multiple cancer signals before symptoms develop.
           </p>
-          <button type="button" className="cs-hero__btn" aria-disabled="true">Start testing</button>
+          <button type="button" className="cs-hero__btn" aria-disabled="true">Begin Testing</button>
         </div>
       </section>
 
@@ -168,7 +159,7 @@ const CancerScreeningPage = () => {
       <section className="cs-disclaimer" aria-label="Disclaimer">
         <p className="cs-disclaimer__text">
           Service availability may vary by region. Eligibility and provider approval may be required. Results are for informational purposes only and not intended for diagnosis or treatment.{' '}
-          <a href="#" className="cs-disclaimer__link" aria-disabled="true">Learn more</a>
+          {/* <a href="#" className="cs-disclaimer__link" aria-disabled="true">Learn more</a> */}
         </p>
       </section>
 
@@ -216,22 +207,22 @@ const CancerScreeningPage = () => {
             </ul>
 
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
-              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">See all cancers screened</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Start Screening</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">See What’s Screened</button>
             </div>
 
             <div className="cs-step__notes">
               <p className="cs-step__note">
-                <sup>2</sup>Estimates are based on projected cancer cases in the U.S. for 2024 and do not include prostate cancer. Screening decisions may vary by individual, and certain cancers such as colorectal and some lung types may have screening options available.{' '}
-                <a href="#" className="cs-step__source" aria-disabled="true">Source</a>
+               Screening services are intended for informational and preventive wellness purposes only.{' '}
+                {/* <a href="#" className="cs-step__source" aria-disabled="true">Source</a> */}
               </p>
               <p className="cs-step__note">
-                <sup>3</sup>Based on published clinical research evaluating multi-cancer early detection using advanced testing methods in independent validation studies.{' '}
-                <a href="#" className="cs-step__source" aria-disabled="true">Source</a>
+                Results may vary and should be reviewed with a qualified healthcare professional.{' '}
+                {/* <a href="#" className="cs-step__source" aria-disabled="true">Source</a> */}
               </p>
               <p className="cs-step__note">
-                <sup>4</sup>Data sourced from national cancer research programs covering multiple years. Current evidence does not confirm a reduction in overall cancer-related mortality or improvement in survival outcomes from this type of testing.{' '}
-                <a href="#" className="cs-step__source" aria-disabled="true">Source</a>
+                Certain screenings may require provider approval and eligibility review.{' '}
+                {/* <a href="#" className="cs-step__source" aria-disabled="true">Source</a> */}
               </p>
             </div>
           </div>
@@ -304,12 +295,12 @@ const CancerScreeningPage = () => {
             </ol>
 
             <div className="hiw-step__actions">
-              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Get started</button>
-              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">Learn more</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--primary" aria-disabled="true">Begin Testing</button>
+              <button type="button" className="hiw-step__btn hiw-step__btn--outline" aria-disabled="true">View Details</button>
             </div>
 
             <p className="cs-step__note cs-step2__fineprint">
-              <sup>5</sup>A Labs subscription is needed to access the multi-cancer test. Subscriptions may be combined and renew together. Adding the test later may change your renewal timeline.
+              A Labs subscription is needed to access the multi-cancer test. Subscriptions may be combined and renew together. Adding the test later may change your renewal timeline.
             </p>
           </div>
         </div>
@@ -390,15 +381,15 @@ const CancerScreeningPage = () => {
           </picture>
 
           <p className="cs-results__disclaimer">
-            Diagnostic testing is needed to confirm cancer. The test does not detect a signal for all cancers, and not all cancers can be detected in the blood. False positive and false negative results do occur. We recommend talking to your healthcare provider to determine if additional testing is needed.
+            Your results suggest a follow-up conversation with a healthcare provider may be beneficial.Additional screening or evaluation may help provide deeper health insights.A healthcare professional can help review your results and discuss possible next steps.Your screening identified signals that may require further attention or monitoring.
           </p>
 
-          <button type="button" className="cs-results__btn" aria-disabled="true">Start testing</button>
+          <button type="button" className="cs-results__btn" aria-disabled="true">Begin Screening</button>
         </div>
       </section>
 
       {/* FAQs */}
-      <section className="cs-faq" aria-label="Hims Multi-Cancer Test FAQs">
+      <section className="cs-faq" aria-label="healix Multi-Cancer Test FAQs">
         <div className="cs-faq__container">
           <div className="cs-faq__left">
             <h2 className="cs-faq__title">
@@ -462,7 +453,7 @@ const CancerScreeningPage = () => {
               <p className="cs-sf__desc">
                 Add advanced cancer screening to your plan and gain deeper insights into your overall health. Get comprehensive testing across key health areas along with a personalized action plan.
               </p>
-              <button type="button" className="labs-sf__btn" aria-disabled="true">Learn more</button>
+              <button type="button" className="labs-sf__btn" aria-disabled="true">Explore Labs</button>
             </div>
           </div>
         </div>

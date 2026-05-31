@@ -35,47 +35,47 @@ const bloodBiomarkers = [
   {
     title: 'Hematocrit',
     body: 'Hematocrit measures how much of your blood is made up of red blood cells. Healthy levels support efficient oxygen delivery across your body.',
-    learnMore: 'Learn more about Hematocrit',
+    // learnMore: 'Learn more about Hematocrit',
   },
   {
     title: 'Hemoglobin',
     body: 'Hemoglobin is the oxygen-carrying protein in red blood cells. Balanced levels ensure your organs and tissues receive the oxygen they need.',
-    learnMore: 'Learn more about Hemoglobin',
+    // learnMore: 'Learn more about Hemoglobin',
   },
   {
     title: 'Mean Corpuscular Hemoglobin Concentration (MCHC)',
     body: 'MCHC shows how concentrated hemoglobin is within your red blood cells. Normal levels indicate effective oxygen transport and healthy red blood cell function.',
-    learnMore: 'Learn more about Mean Corpuscular Hemoglobin Concentration (MCHC)',
+    // learnMore: 'Learn more about Mean Corpuscular Hemoglobin Concentration (MCHC)',
   },
   {
     title: 'Mean Corpuscular Hemoglobin (MCH)',
     body: 'MCH reflects the average amount of hemoglobin in each red blood cell. Healthy values support proper oxygen circulation in the body.',
-    learnMore: 'Learn more about Mean Corpuscular Hemoglobin (MCH)',
+    // learnMore: 'Learn more about Mean Corpuscular Hemoglobin (MCH)',
   },
   {
     title: 'Mean Corpuscular Volume (MCV)',
     body: 'MCV measures the size of your red blood cells. It can help identify potential imbalances related to nutrition or blood health.',
-    learnMore: 'Learn more about Mean Corpuscular Volume (MCV)',
+    // learnMore: 'Learn more about Mean Corpuscular Volume (MCV)',
   },
   {
     title: 'Mean Platelet Volume (MPV)',
     body: 'MPV indicates the average size of your platelets, which are important for clotting. Balanced levels suggest normal platelet function.',
-    learnMore: 'Learn more about Mean Platelet Volume (MPV)',
+    // learnMore: 'Learn more about Mean Platelet Volume (MPV)',
   },
   {
     title: 'Platelet Count',
     body: 'Platelets help your body stop bleeding by forming clots. Healthy levels support proper healing and protection.',
-    learnMore: 'Learn more about Platelet Count',
+    // learnMore: 'Learn more about Platelet Count',
   },
   {
     title: 'Red Blood Cell Count',
     body: 'This measures the number of red blood cells in your blood. Balanced levels indicate efficient oxygen transport.',
-    learnMore: 'Learn more about Red Blood Cell Count',
+    // learnMore: 'Learn more about Red Blood Cell Count',
   },
   {
     title: 'Red Cell Distribution Width (RDW)',
     body: 'RDW shows how consistent your red blood cells are in size. Stable levels suggest effective and uniform oxygen delivery.',
-    learnMore: 'Learn more about Red Cell Distribution Width (RDW)',
+    // learnMore: 'Learn more about Red Cell Distribution Width (RDW)',
   },
 ]
 
@@ -83,77 +83,77 @@ const nutrientsBiomarkers = [
   {
     title: 'Vitamin B12',
     body: 'Vitamin B12 is important for energy production, nerve function, and red blood cell formation. Healthy levels support sustained energy and overall vitality.',
-    learnMore: 'Learn more about Vitamin B12',
+    // learnMore: 'Learn more about Vitamin B12',
   },
   {
     title: 'Ferritin',
     body: 'Ferritin reflects the amount of stored iron in your body. Balanced levels indicate sufficient reserves to support oxygen transport and energy.',
-    learnMore: 'Learn more about Ferritin',
+    // learnMore: 'Learn more about Ferritin',
   },
   {
     title: 'Folate, RBC',
     body: 'Folate supports DNA formation and helps produce healthy red blood cells. Adequate levels contribute to proper cellular function.',
-    learnMore: 'Learn more about Folate, RBC',
+    // learnMore: 'Learn more about Folate, RBC',
   },
   {
     title: 'Homocysteine',
     body: 'This amino acid is linked to how your body processes key vitamins. Healthy levels suggest proper nutrient metabolism.',
-    learnMore: 'Learn more about Homocysteine',
+    // learnMore: 'Learn more about Homocysteine',
   },
   {
     title: 'Iron',
     body: 'Iron is essential for carrying oxygen in the blood. Balanced levels help maintain energy and focus.',
-    learnMore: 'Learn more about Iron',
+    // learnMore: 'Learn more about Iron',
   },
   {
     title: 'Iron Binding Capacity',
     body: 'This measures how effectively your blood can transport iron. Healthy levels indicate efficient iron movement throughout the body.',
-    learnMore: 'Learn more about Iron Binding Capacity',
+    // learnMore: 'Learn more about Iron Binding Capacity',
   },
   {
     title: 'Iron Saturation',
     body: 'This shows how much iron is being carried in your blood. Proper levels ensure your tissues receive enough oxygen.',
-    learnMore: 'Learn more about Iron Saturation',
+    // learnMore: 'Learn more about Iron Saturation',
   },
   {
     title: 'Magnesium, RBC',
     body: 'Magnesium supports muscle function, nerve activity, and energy production. Healthy levels help maintain overall balance in the body.',
-    learnMore: 'Learn more about Magnesium, RBC',
+    // learnMore: 'Learn more about Magnesium, RBC',
   },
   {
     title: 'Vitamin D',
     body: 'Vitamin D plays a key role in bone strength, immune support, and mood regulation. Adequate levels support overall wellness.',
-    learnMore: 'Learn more about Vitamin D',
+    // learnMore: 'Learn more about Vitamin D',
   },
   {
     title: 'Zinc',
     body: 'Zinc supports immune health, healing, and sensory functions like taste and smell. Balanced levels help maintain strong defenses.',
-    learnMore: 'Learn more about Zinc',
+    // learnMore: 'Learn more about Zinc',
   },
   {
     title: 'Carbon Dioxide',
     body: 'This helps regulate the body\u2019s acid-base balance, supporting proper breathing and energy levels.',
-    learnMore: 'Learn more about Carbon Dioxide',
+    // learnMore: 'Learn more about Carbon Dioxide',
   },
   {
     title: 'Calcium',
     body: 'Calcium is essential for strong bones, muscle function, and proper nerve signaling. Healthy levels support overall body function.',
-    learnMore: 'Learn more about Calcium',
+    // learnMore: 'Learn more about Calcium',
   },
   {
     title: 'Chloride',
     body: 'Chloride helps maintain fluid balance and supports digestion by contributing to stomach acid production.',
-    learnMore: 'Learn more about Chloride',
+    // learnMore: 'Learn more about Chloride',
   },
   {
     title: 'Potassium',
     body: 'Potassium supports heart rhythm, muscle movement, and nerve signals. Balanced levels are important for daily function.',
-    learnMore: 'Learn more about Potassium',
+    // learnMore: 'Learn more about Potassium',
   },
   {
     title: 'Sodium',
     body: 'Sodium helps regulate fluid balance, blood pressure, and nerve activity. Healthy levels support overall stability in the body.',
-    learnMore: 'Learn more about Sodium',
+    // learnMore: 'Learn more about Sodium',
   },
 ]
 
@@ -161,73 +161,73 @@ const immuneBiomarkers = [
   {
     title: 'Basophils (absolute count)',
     body: 'Basophils are a type of white blood cell that help your body respond to allergens and fight certain parasites.',
-    learnMore: 'Learn more about Basophils (absolute count)',
+    // learnMore: 'Learn more about Basophils (absolute count)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Basophils (percentage)',
     body: 'Basophils typically make up less than 1% of your total white blood cells and help trigger allergic responses and fight certain parasites. A healthy percentage means your blood contains the expected proportion of basophils, which are important for normal immune function.',
-    learnMore: 'Learn more about Basophils (percentage)',
+    // learnMore: 'Learn more about Basophils (percentage)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Eosinophils (absolute count)',
     body: 'Eosinophils are a type of white blood cell that help to control allergy-related inflammation and protect against certain parasites. A healthy count means your blood contains the expected number of eosinophils, which are important for normal immune function.',
-    learnMore: 'Learn more about Eosinophils (absolute count)',
+    // learnMore: 'Learn more about Eosinophils (absolute count)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Eosinophils (percentage)',
     body: 'Eosinophils normally make up about 1-4% of your total white blood cells and help your body fight parasites and control allergy-related inflammation. A healthy percentage means your blood contains the expected proportion of eosinophils, which are important for normal immune function.',
-    learnMore: 'Learn more about Eosinophils (percentage)',
+    // learnMore: 'Learn more about Eosinophils (percentage)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Lymphocytes (absolute count)',
     body: 'Lymphocytes are a type of white blood cell that play a key role in building long-term immunity by recognizing and attacking viruses. A healthy count means your immune system is equipped to defend against infections and maintain balance.',
-    learnMore: 'Learn more about Lymphocytes (absolute count)',
+    // learnMore: 'Learn more about Lymphocytes (absolute count)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Lymphocytes (percentage)',
     body: 'Lymphocytes typically make up 20-40% of your total white blood cells and help your body fight viral infections while building long-term immunity. A healthy percentage means your blood contains the expected proportion of lymphocytes, which are important for normal immune function.',
-    learnMore: 'Learn more about Lymphocytes (percentage)',
+    // learnMore: 'Learn more about Lymphocytes (percentage)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Monocytes (absolute count)',
     body: 'Monocytes are a type of white blood cell that help your body defend against bacteria and clean up damaged cells. A healthy count means your immune system is working efficiently to support your healing and protect against infection.',
-    learnMore: 'Learn more about Monocytes (absolute count)',
+    // learnMore: 'Learn more about Monocytes (absolute count)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Monocytes (percentage)',
     body: 'Monocytes typically make up about 2-8% of your total white blood cells. They act as your body\u2019s clean-up crew to remove damaged cells and help fight bacterial infections. A healthy percentage means your blood contains the expected proportion of monocytes, which are important for normal immune function.',
-    learnMore: 'Learn more about Monocytes (percentage)',
+    // learnMore: 'Learn more about Monocytes (percentage)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Neutrophils (absolute count)',
     body: 'Neutrophils are the most common type of white blood cell and act as your body\u2019s first line of defense against bacterial infections. A healthy count means your immune system is well-prepared to respond quickly to infection when needed.',
-    learnMore: 'Learn more about Neutrophils (absolute count)',
+    // learnMore: 'Learn more about Neutrophils (absolute count)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Neutrophils (percentage)',
     body: 'Neutrophils are the most common type of white blood cell, typically making up 50\u201370% of your total white blood cells. They act as your body\u2019s first line of defense against bacterial infections. A healthy percentage means your blood contains the expected proportion of neutrophils, which are important for normal immune function.',
-    learnMore: 'Learn more about Neutrophils (percentage)',
+    // learnMore: 'Learn more about Neutrophils (percentage)',
     badge: 'Tested 2x/year',
   },
   {
     title: 'White Blood Cell Count',
     body: 'White blood cells are an essential part of your immune system, helping your body fight infections and support healing. A healthy count means your immune defenses are strong and ready to respond in case infection arises.',
-    learnMore: 'Learn more about White Blood Cell Count',
+    // learnMore: 'Learn more about White Blood Cell Count',
     badge: 'Tested 2x/year',
   },
   {
     title: 'Systemic Immune-Inflammation Index (SII)',
     body: 'The systemic immune-inflammation index (SII) combines three key blood markers, platelets, neutrophils, and lymphocytes, to reflect the balance between inflammation and your immune defenses. A healthy SII means your immune system is well-regulated, not under excess inflammatory strain, and ready to defend your body against infection effectively.',
-    learnMore: 'Learn more about Systemic Immune-Inflammation Index (SII)',
+    // learnMore: 'Learn more about Systemic Immune-Inflammation Index (SII)',
     badge: 'Tested 2x/year',
   },
 ]
@@ -236,37 +236,37 @@ const liverBiomarkers = [
   {
     title: 'Alanine Transaminase (ALT)',
     body: 'ALT is an enzyme found in liver cells that helps process proteins. Healthy levels suggest your liver cells are functioning properly.',
-    learnMore: 'Learn more about Alanine Transaminase (ALT)',
+    // learnMore: 'Learn more about Alanine Transaminase (ALT)',
   },
   {
     title: 'Aspartate Aminotransferase (AST)',
     body: 'AST is an enzyme present in both the liver and muscles. Balanced levels indicate that these tissues are not under stress or damage.',
-    learnMore: 'Learn more about Aspartate Aminotransferase (AST)',
+    // learnMore: 'Learn more about Aspartate Aminotransferase (AST)',
   },
   {
     title: 'Alkaline Phosphatase (ALP)',
     body: 'ALP is linked to liver function and bile flow. Normal levels support healthy liver activity and overall metabolic processes.',
-    learnMore: 'Learn more about Alkaline Phosphatase (ALP)',
+    // learnMore: 'Learn more about Alkaline Phosphatase (ALP)',
   },
   {
     title: 'Albumin',
     body: 'Albumin is a protein produced by the liver that helps transport essential substances in the blood and maintain fluid balance.',
-    learnMore: 'Learn more about Albumin',
+    // learnMore: 'Learn more about Albumin',
   },
   {
     title: 'Total Protein',
     body: 'This measures the combined amount of important proteins in your blood that support immune function and nutrient transport.',
-    learnMore: 'Learn more about Total Protein',
+    // learnMore: 'Learn more about Total Protein',
   },
   {
     title: 'Globulin',
     body: 'Globulins are proteins that play a role in immune defense and transporting nutrients. Healthy levels reflect proper liver and immune function.',
-    learnMore: 'Learn more about Globulin',
+    // learnMore: 'Learn more about Globulin',
   },
   {
     title: 'Albumin/Globulin (A/G) Ratio',
     body: 'This ratio compares two key blood proteins to assess overall liver health and immune system balance.',
-    learnMore: 'Learn more about Albumin/Globulin (A/G) Ratio',
+    // learnMore: 'Learn more about Albumin/Globulin (A/G) Ratio',
   },
 ]
 
@@ -274,22 +274,22 @@ const kidneyBiomarkers = [
   {
     title: 'Blood Urea Nitrogen (BUN)',
     body: 'BUN measures the level of waste produced from protein breakdown in your blood. Balanced levels indicate your kidneys are effectively clearing this waste.',
-    learnMore: 'Learn more about Blood Urea Nitrogen (BUN)',
+    // learnMore: 'Learn more about Blood Urea Nitrogen (BUN)',
   },
   {
     title: 'BUN/Creatinine Ratio',
     body: 'This ratio compares two important waste markers to provide insight into hydration and how your body processes protein. Healthy values suggest proper kidney function and fluid balance.',
-    learnMore: 'Learn more about BUN/Creatinine Ratio',
+    // learnMore: 'Learn more about BUN/Creatinine Ratio',
   },
   {
     title: 'Creatinine',
     body: 'Creatinine is a natural waste product generated by muscle activity. Stable levels show that your kidneys are filtering waste efficiently.',
-    learnMore: 'Learn more about Creatinine',
+    // learnMore: 'Learn more about Creatinine',
   },
   {
     title: 'Estimated Glomerular Filtration Rate (eGFR)',
     body: 'eGFR estimates how well your kidneys are filtering blood. A healthy range reflects effective waste removal and proper kidney performance.',
-    learnMore: 'Learn more about Estimated Glomerular Filtration Rate (eGFR)',
+    // learnMore: 'Learn more about Estimated Glomerular Filtration Rate (eGFR)',
   },
 ]
 
@@ -297,27 +297,27 @@ const thyroidBiomarkers = [
   {
     title: 'Thyroglobulin Antibodies (TgAb)',
     body: 'These antibodies can affect the proteins your thyroid uses to produce hormones. Lower levels suggest your immune system is not interfering with normal thyroid function.',
-    learnMore: 'Learn more about Thyroglobulin Antibodies (TgAb)',
+    // learnMore: 'Learn more about Thyroglobulin Antibodies (TgAb)',
   },
   {
     title: 'Thyroid Peroxidase Antibodies (TPOAb)',
     body: 'These antibodies may impact enzymes involved in hormone production. Healthy levels indicate your thyroid can produce hormones without disruption.',
-    learnMore: 'Learn more about Thyroid Peroxidase Antibodies (TPOAb)',
+    // learnMore: 'Learn more about Thyroid Peroxidase Antibodies (TPOAb)',
   },
   {
     title: 'Free Triiodothyronine (T3)',
     body: 'T3 is the active form of thyroid hormone that supports energy, metabolism, and overall function. Balanced levels help maintain steady energy and daily performance.',
-    learnMore: 'Learn more about Free Triiodothyronine (T3)',
+    // learnMore: 'Learn more about Free Triiodothyronine (T3)',
   },
   {
     title: 'Thyroid-Stimulating Hormone (TSH)',
     body: 'TSH signals your thyroid to produce hormones. A balanced level shows proper communication between your brain and thyroid for stable metabolism and energy.',
-    learnMore: 'Learn more about Thyroid-Stimulating Hormone (TSH)',
+    // learnMore: 'Learn more about Thyroid-Stimulating Hormone (TSH)',
   },
   {
     title: 'Free Thyroxine (T4)',
     body: 'T4 is the primary hormone produced by the thyroid, which your body converts into its active form when needed. Healthy levels support consistent hormone availability.',
-    learnMore: 'Learn more about Free Thyroxine (T4)',
+    // learnMore: 'Learn more about Free Thyroxine (T4)',
   },
 ]
 
@@ -325,12 +325,12 @@ const inflammationBiomarkers = [
   {
     title: 'Cortisol',
     body: 'Cortisol is a key hormone released during stress that plays a role in energy levels, metabolism, and immune response. Balanced levels support better focus, stable mood, and overall resilience.',
-    learnMore: 'Learn more about Cortisol',
+    // learnMore: 'Learn more about Cortisol',
   },
   {
     title: 'DHEA-S',
     body: 'DHEA-S is produced by the adrenal glands and helps regulate the effects of stress hormones. Healthy levels contribute to balanced energy, mood stability, and long-term wellness.',
-    learnMore: 'Learn more about DHEA-S',
+    // learnMore: 'Learn more about DHEA-S',
   },
 ]
 
@@ -338,47 +338,47 @@ const hormoneBiomarkers = [
   {
     title: 'Insulin-like Growth Factor 1 (IGF-1)',
     body: 'IGF-1 reflects how active your growth hormone system is. Balanced levels support healthy muscle, bone strength, and tissue repair.',
-    learnMore: 'Learn more about Insulin-like Growth Factor 1 (IGF-1)',
+    // learnMore: 'Learn more about Insulin-like Growth Factor 1 (IGF-1)',
   },
   {
     title: 'IGF-1 Z-score',
     body: 'This value compares your IGF-1 level with others in your age group. It helps show whether your levels are within a typical range based on age and development.',
-    learnMore: 'Learn more about IGF-1 Z-score',
+    // learnMore: 'Learn more about IGF-1 Z-score',
   },
   {
     title: 'Estradiol',
     body: 'Estradiol is a form of estrogen present in men, produced from testosterone. Healthy levels support bone health, brain function, and overall well-being.',
-    learnMore: 'Learn more about Estradiol',
+    // learnMore: 'Learn more about Estradiol',
   },
   {
     title: 'Follicle Stimulating Hormone (FSH)',
     body: 'FSH is produced by the brain and plays an important role in reproductive health, including sperm production.',
-    learnMore: 'Learn more about Follicle Stimulating Hormone (FSH)',
+    // learnMore: 'Learn more about Follicle Stimulating Hormone (FSH)',
   },
   {
     title: 'Luteinizing Hormone (LH)',
     body: 'LH helps regulate testosterone production and is essential for maintaining hormonal balance in the body.',
-    learnMore: 'Learn more about Luteinizing Hormone (LH)',
+    // learnMore: 'Learn more about Luteinizing Hormone (LH)',
   },
   {
     title: 'Prostate Specific Antigen (PSA)',
     body: 'PSA is a protein made by the prostate gland and is commonly used to assess prostate health.',
-    learnMore: 'Learn more about Prostate Specific Antigen (PSA)',
+    // learnMore: 'Learn more about Prostate Specific Antigen (PSA)',
   },
   {
     title: 'Sex Hormone Binding Globulin (SHBG)',
     body: 'SHBG is a protein that binds to hormones like testosterone, controlling how much is available for your body to use.',
-    learnMore: 'Learn more about Sex Hormone Binding Globulin (SHBG)',
+    // learnMore: 'Learn more about Sex Hormone Binding Globulin (SHBG)',
   },
   {
     title: 'Free Testosterone',
     body: 'This is the portion of testosterone that is readily available for use in the body, supporting energy, strength, and overall vitality.',
-    learnMore: 'Learn more about Free Testosterone',
+    // learnMore: 'Learn more about Free Testosterone',
   },
   {
     title: 'Total Testosterone',
     body: 'This measures the overall amount of testosterone in your bloodstream, including both active and bound forms, and helps assess hormonal health.',
-    learnMore: 'Learn more about Total Testosterone',
+    // learnMore: 'Learn more about Total Testosterone',
   },
 ]
 
@@ -386,22 +386,22 @@ const metabolicBiomarkers = [
   {
     title: 'Uric Acid',
     body: 'Uric acid forms when your body breaks down certain foods. It is normally filtered out by the kidneys. Balanced levels indicate your body is processing waste effectively.',
-    learnMore: 'Learn more about Uric Acid',
+    // learnMore: 'Learn more about Uric Acid',
   },
   {
     title: 'Glucose',
     body: 'Glucose is the primary source of energy in your bloodstream. Stable levels show that your body is effectively managing blood sugar.',
-    learnMore: 'Learn more about Glucose',
+    // learnMore: 'Learn more about Glucose',
   },
   {
     title: 'Hemoglobin A1c (HbA1c)',
     body: 'This test reflects your average blood sugar levels over the past few months. Consistent readings within range suggest good long-term glucose control.',
-    learnMore: 'Learn more about Hemoglobin A1c (HbA1c)',
+    // learnMore: 'Learn more about Hemoglobin A1c (HbA1c)',
   },
   {
     title: 'Insulin',
     body: 'Insulin is a hormone that helps move sugar from your blood into your cells for energy. Healthy levels indicate efficient blood sugar regulation and metabolic balance.',
-    learnMore: 'Learn more about Insulin',
+    // learnMore: 'Learn more about Insulin',
   },
 ]
 
@@ -409,47 +409,47 @@ const heartBiomarkers = [
   {
     title: 'Apolipoprotein B (ApoB)',
     body: 'ApoB is a protein linked to particles that carry harmful cholesterol in the blood. Lower levels suggest fewer of these particles and better support for heart health.',
-    learnMore: 'Learn more about Apolipoprotein B',
+    // learnMore: 'Learn more about Apolipoprotein B',
   },
   {
     title: 'High-Sensitivity C-Reactive Protein (hs-CRP)',
     body: 'This protein increases when there is inflammation in the body. Lower levels are generally associated with a healthier heart.',
-    learnMore: 'Learn more about High-Sensitivity C-Reactive Protein',
+    // learnMore: 'Learn more about High-Sensitivity C-Reactive Protein',
   },
   {
     title: 'Lipoprotein (a) [Lp(a)]',
     body: 'Lp(a) is a type of cholesterol particle influenced by genetics. Lower levels are typically considered better for maintaining heart health.',
-    learnMore: 'Learn more about Lipoprotein (a)',
+    // learnMore: 'Learn more about Lipoprotein (a)',
   },
   {
     title: 'Non-HDL Cholesterol',
     body: 'This includes all cholesterol types that may contribute to plaque buildup in arteries. Keeping levels in a healthy range supports cardiovascular wellness.',
-    learnMore: 'Learn more about Non-HDL Cholesterol',
+    // learnMore: 'Learn more about Non-HDL Cholesterol',
   },
   {
     title: 'HDL Cholesterol',
     body: 'Often called "good" cholesterol, HDL helps remove excess fats from the bloodstream. Higher levels can support better heart protection.',
-    learnMore: 'Learn more about HDL Cholesterol',
+    // learnMore: 'Learn more about HDL Cholesterol',
   },
   {
     title: 'LDL Cholesterol',
     body: 'Known as "bad" cholesterol, LDL can contribute to plaque formation in arteries. Lower levels help reduce this risk.',
-    learnMore: 'Learn more about LDL Cholesterol',
+    // learnMore: 'Learn more about LDL Cholesterol',
   },
   {
     title: 'Total Cholesterol',
     body: 'This measures the combined amount of different cholesterol types in your blood, offering an overall view of your cholesterol status.',
-    learnMore: 'Learn more about Total Cholesterol',
+    // learnMore: 'Learn more about Total Cholesterol',
   },
   {
     title: 'Cholesterol/HDL Ratio',
     body: 'This compares total cholesterol with HDL levels to give a clearer picture of heart health balance.',
-    learnMore: 'Learn more about Cholesterol/HDL Ratio',
+    // learnMore: 'Learn more about Cholesterol/HDL Ratio',
   },
   {
     title: 'Triglycerides',
     body: 'These are fats stored in the body for energy. Healthy levels indicate better fat metabolism and support overall cardiovascular health.',
-    learnMore: 'Learn more about Triglycerides',
+    // learnMore: 'Learn more about Triglycerides',
   },
 ]
 
@@ -509,7 +509,7 @@ const WhatWeTestPage = () => {
         iconSrc={null}
         message={(
           <span style={{ whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            Get in-depth lab testing for less than $1/day
+            Full-body lab testing without the high cost
             <svg
               width="14"
               height="14"
@@ -601,7 +601,7 @@ const WhatWeTestPage = () => {
 
         <p className="wwt-hero__disclaimer">
           Not offered in all locations. Eligibility and a provider&rsquo;s approval may be required. Lab results are for informational purposes only and are not a substitute for medical diagnosis, treatment, or care.{' '}
-          <a href="#" className="wwt-hero__more" aria-disabled="true">Learn more</a>
+          {/* <a href="#" className="wwt-hero__more" aria-disabled="true">Learn more</a> */}
         </p>
       </section>
 
@@ -1182,17 +1182,17 @@ const WhatWeTestPage = () => {
       <section className="wwt-bioage">
         <div className="wwt-bioage__inner">
           <div className="wwt-bioage__left">
-            <h2 className="wwt-bioage__heading">Biological age</h2>
-            <span className="wwt-bioage__badge">21 factors</span>
+            <h2 className="wwt-bioage__heading">Healthspan Score</h2>
+            <span className="wwt-bioage__badge">Health Metrics</span>
             <p className="wwt-bioage__desc">
-              Your biological age reflects how your body is aging based on internal health—not just your actual age. By improving key health indicators, you can support longevity and maintain better overall wellness over time.
+              Discover how your lifestyle and health markers may influence the way your body ages over time.Understand the connection between your health markers and overall vitality.
             </p>
             <div className="wwt-bioage__actions">
-              <button type="button" className="wwt-bioage__btn wwt-bioage__btn--primary" aria-disabled="true">Get started</button>
-              <button type="button" className="wwt-bioage__btn wwt-bioage__btn--outline" aria-disabled="true">Why it matters</button>
+              <button type="button" className="wwt-bioage__btn wwt-bioage__btn--primary" aria-disabled="true">Start Your Analysis</button>
+              <button type="button" className="wwt-bioage__btn wwt-bioage__btn--outline" aria-disabled="true">Explore the Science</button>
             </div>
             <p className="wwt-bioage__disclaimer">
-              Biological Age is an estimate based on biomarker data and is not a medical diagnosis. Your results are intended to provide insights, not replace care from a licensed provider.
+              Consult a healthcare professional for personalized medical guidance and treatment decisions.
             </p>
           </div>
           <div className="wwt-bioage__right">
@@ -1255,7 +1255,7 @@ const WhatWeTestPage = () => {
                 With regular testing throughout the year, you can track changes over time, gain meaningful insights, and make smarter decisions for your future health.
               </p>
               <div className="wwt-hands__actions">
-                <button type="button" className="wwt-hands__btn" aria-disabled="true">Get your results</button>
+                <button type="button" className="wwt-hands__btn" aria-disabled="true">Explore Your Results</button>
               </div>
             </div>
           </div>
