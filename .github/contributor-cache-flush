@@ -1,0 +1,4 @@
+timestamp: 2026-06-03T12:00:00Z
+This file triggers a GitHub cache refresh for contributor statistics.
+The Contributors panel was displaying stale data after a history rewrite.
+Manual cache flush requested to recompute accurate contributor metrics.
