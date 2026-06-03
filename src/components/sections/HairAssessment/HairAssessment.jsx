@@ -1,6 +1,11 @@
 import { useEffect, useState, useCallback } from 'react'
 import hairAssessmentConfig from '@/config/hairAssessmentConfig'
+import AssessmentLoading from './AssessmentLoading'
+import AssessmentResult from './AssessmentResult'
 import './HairAssessment.scss'
+
+// How long the "Analyzing…" screen shows before the result (2–3s premium feel).
+const LOADING_DURATION_MS = 2400
 
 // -------- Icons --------
 
@@ -160,22 +165,48 @@ const StateSelect = ({ question, value = {}, onChange }) => {
 
 // -------- Modal --------
 
-const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig }) => {
+const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig, ariaLabel = 'Hair assessment' }) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [answers, setAnswers] = useState({})
   const [direction, setDirection] = useState('forward')
+  const [status, setStatus] = useState('running') // running | loading | done
 
+  // Reset the flow each time the modal opens (intentional state reset on the
+  // isOpen prop edge — same pattern used across the assessment modals).
   useEffect(() => {
     if (isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStepIndex(0)
       setAnswers({})
       setDirection('forward')
+      setStatus('running')
     }
   }, [isOpen])
 
+  // After the final question we show the analyzing screen, then flip to the
+  // personalized result. Timer is cleared if the modal closes meanwhile.
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (!isOpen || status !== 'loading') return undefined
+    const id = setTimeout(() => setStatus('done'), LOADING_DURATION_MS)
+    return () => clearTimeout(id)
+  }, [isOpen, status])
+
+  // Lock background scroll while the modal is open. Reserve the vanished
+  // scrollbar's width as body padding so removing the scrollbar doesn't
+  // reflow/shift the page sideways (the open flicker). Inline styles are
+  // captured and restored so we never clobber pre-existing values.
+  useEffect(() => {
+    if (!isOpen) return
+    const { body } = document
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    const prevOverflow = body.style.overflow
+    const prevPaddingRight = body.style.paddingRight
+    body.style.overflow = 'hidden'
+    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`
+    return () => {
+      body.style.overflow = prevOverflow
+      body.style.paddingRight = prevPaddingRight
+    }
   }, [isOpen])
 
   const handleKey = useCallback((e) => {
@@ -190,13 +221,23 @@ const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig }) => {
 
   const totalSteps = config.questions.length
   const currentQuestion = config.questions[stepIndex]
-  const progress = Math.min(1, (stepIndex + 1) / totalSteps)
+  const progress = status === 'running' ? Math.min(1, (stepIndex + 1) / totalSteps) : 1
+
+  // Result is derived from the user's answers when the flow completes.
+  const result =
+    status === 'done' && typeof config.getResult === 'function'
+      ? config.getResult(answers)
+      : null
 
   const advance = () => {
     setDirection('forward')
     if (stepIndex < totalSteps - 1) {
       setStepIndex((i) => i + 1)
+    } else if (typeof config.getResult === 'function') {
+      // Last question answered → analyzing screen → personalized result.
+      setStatus('loading')
     } else {
+      // No result configured for this assessment — preserve prior behavior.
       onClose()
     }
   }
@@ -252,11 +293,11 @@ const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig }) => {
   if (!isOpen) return null
 
   return (
-    <div className="ha-overlay" role="dialog" aria-modal="true" aria-label="Hair assessment">
+    <div className="ha-overlay" role="dialog" aria-modal="true" aria-label={ariaLabel}>
       <div className="ha-overlay__backdrop" onClick={onClose} />
       <div className="ha-modal">
         <div className="ha-modal__header">
-          {stepIndex > 0 ? (
+          {status === 'running' && stepIndex > 0 ? (
             <button type="button" className="ha-iconbtn" onClick={handleBack} aria-label="Back">
               <BackIcon />
             </button>
@@ -272,7 +313,7 @@ const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig }) => {
         </div>
 
         <div className="ha-modal__body">
-          {currentQuestion && (
+          {status === 'running' && currentQuestion && (
             <div
               key={currentQuestion.id}
               className={`ha-step ha-step--${direction}`}
@@ -304,9 +345,21 @@ const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig }) => {
               )}
             </div>
           )}
+
+          {status === 'loading' && (
+            <div className="ha-step ha-step--forward">
+              <AssessmentLoading config={config.loading} />
+            </div>
+          )}
+
+          {status === 'done' && (
+            <div className="ha-step ha-step--forward">
+              <AssessmentResult result={result} onCta={onClose} />
+            </div>
+          )}
         </div>
 
-        {needsContinueButton(currentQuestion) && (
+        {status === 'running' && needsContinueButton(currentQuestion) && (
           <div className="ha-modal__footer">
             <button
               type="button"

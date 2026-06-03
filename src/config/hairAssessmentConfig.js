@@ -169,6 +169,72 @@ const hairAssessmentConfig = {
       requiresTerms: true,
     },
   ],
+
+  // Analyzing screen shown after the final question.
+  loading: {
+    title: 'Analyzing your responses…',
+    messages: [
+      'Reviewing your hair profile',
+      'Identifying possible root causes',
+      'Matching treatments to your goals',
+      'Preparing your personalized plan',
+    ],
+  },
+
+  // Personalized result, dynamically generated from the user's answers.
+  getResult: (a) => {
+    const stressed = a.stress === 'always' || a.stress === 'sometimes'
+    const family = a.familyHistory === 'yes'
+    const early =
+      a.lossLevel === 'little' ||
+      a.goal === 'preventive' ||
+      a.goal === 'receding' ||
+      a.timeline === 'past-months' ||
+      a.timeline === 'past-year'
+    const advanced = a.lossLevel === 'lot'
+
+    let summary
+    if (early && stressed && family) {
+      summary =
+        'Your responses suggest early-stage hair thinning possibly influenced by stress and genetics.'
+    } else if (family && stressed) {
+      summary =
+        'Your responses suggest hair thinning that may be influenced by both genetics and stress.'
+    } else if (advanced) {
+      summary =
+        'Your responses suggest more established hair loss that responds best to a comprehensive treatment plan.'
+    } else if (early) {
+      summary =
+        'Your responses suggest early-stage hair changes that are well-suited to preventive care.'
+    } else {
+      summary =
+        'Your responses suggest hair thinning that can be supported with a targeted treatment plan.'
+    }
+
+    const insights = []
+    if (family) insights.push('A family history of hair loss is a strong but treatable signal.')
+    if (stressed) insights.push('Stress-related shedding often improves with consistent treatment.')
+    if (early) insights.push('Acting early gives treatments the best chance to work.')
+
+    const recommendations = [
+      { title: 'Hair regrowth treatment', description: 'Prescription options to help grow thicker, fuller hair.' },
+      { title: 'Scalp health support', description: 'Targeted care to create the right environment for growth.' },
+      early
+        ? { title: 'Preventive treatment plan', description: 'Get ahead of further thinning before it progresses.' }
+        : { title: 'Comprehensive regrowth plan', description: 'A multi-step routine for more advanced hair loss.' },
+    ]
+
+    return {
+      heading: 'Your personalized hair plan',
+      summary,
+      insights,
+      recommendationsTitle: 'Recommended for you',
+      recommendations,
+      ctas: [{ label: 'Start Hair Plan' }, { label: 'Continue Consultation' }],
+      disclaimer:
+        'This is not a medical diagnosis. A licensed provider will review your information.',
+    }
+  },
 }
 
 export default hairAssessmentConfig

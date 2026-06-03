@@ -449,4 +449,174 @@
     &:hover:not(:disabled) { background-color: #1f1f1f; }
     &:disabled { opacity: 0.4; cursor: not-allowed; }
   }
+
+  &--outline {
+    background-color: transparent;
+    color: #000;
+    border-color: rgba(0, 0, 0, 0.2);
+
+    &:hover { background-color: rgba(0, 0, 0, 0.04); }
+  }
+}
+
+// =============================================
+// Loading / Analyzing screen
+// =============================================
+.ha-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+  padding: 48px 0;
+  min-height: 320px;
+}
+
+.ha-loading__spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #000;
+  animation: ha-spin 0.9s linear infinite;
+}
+
+@keyframes ha-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ha-loading__title {
+  font-family: $font-primary;
+  font-size: clamp(20px, 2.6vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #000;
+  margin: 0;
+}
+
+.ha-loading__msg {
+  font-family: $font-primary;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+  min-height: 24px;
+  animation: ha-fade-in 0.4s ease both;
+}
+
+// =============================================
+// Personalized result screen
+// =============================================
+.ha-result {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ha-result__heading {
+  font-family: $font-primary;
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #000;
+  margin: 0;
+}
+
+.ha-result__summary {
+  font-family: $font-primary;
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0;
+}
+
+.ha-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+}
+
+.ha-insight {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: $font-primary;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.ha-insight__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.ha-result__section-title {
+  font-family: $font-primary;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin: 4px 0 0;
+}
+
+.ha-recs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ha-rec {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  background-color: #fff;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+    transform: scale(1.01);
+  }
+}
+
+.ha-rec__title {
+  font-family: $font-primary;
+  font-size: clamp(16px, 1.6vw, 18px);
+  font-weight: 600;
+  color: #000;
+}
+
+.ha-rec__desc {
+  font-family: $font-primary;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.ha-result__ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.ha-result__disclaimer {
+  font-family: $font-primary;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin: 0;
 }

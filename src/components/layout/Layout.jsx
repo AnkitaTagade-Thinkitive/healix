@@ -19,6 +19,9 @@ const LabsOffcanvas = lazy(() => import('@/components/sections/LabsOffcanvas/Lab
 const WLOffcanvas = lazy(() => import('@/components/sections/WLOffcanvas/WLOffcanvas'))
 const WegovyAssessment = lazy(() => import('@/components/sections/WegovyAssessment/WegovyAssessment'))
 const HairAssessment = lazy(() => import('@/components/sections/HairAssessment/HairAssessment'))
+const SexAssessment = lazy(() => import('@/components/sections/SexAssessment/SexAssessment'))
+const TestosteroneAssessment = lazy(() => import('@/components/sections/TestosteroneAssessment/TestosteroneAssessment'))
+const HealthAssessment = lazy(() => import('@/components/sections/HealthAssessment/HealthAssessment'))
 
 const Layout = () => {
   // Each offcanvas now has TWO bits of state:
@@ -38,6 +41,15 @@ const Layout = () => {
 
   const [hairArmed, setHairArmed] = useState(false)
   const [hairOpen, setHairOpen] = useState(false)
+
+  const [sexArmed, setSexArmed] = useState(false)
+  const [sexOpen, setSexOpen] = useState(false)
+
+  const [testosteroneArmed, setTestosteroneArmed] = useState(false)
+  const [testosteroneOpen, setTestosteroneOpen] = useState(false)
+
+  const [healthArmed, setHealthArmed] = useState(false)
+  const [healthOpen, setHealthOpen] = useState(false)
 
   // NOTE: the auth offcanvas is mounted globally in <AuthGate /> at the
   // router root so it works on every page (including pages that don't use
@@ -61,15 +73,33 @@ const Layout = () => {
       setHairArmed(true)
       setHairOpen(true)
     }
+    const sexHandler = () => {
+      setSexArmed(true)
+      setSexOpen(true)
+    }
+    const testosteroneHandler = () => {
+      setTestosteroneArmed(true)
+      setTestosteroneOpen(true)
+    }
+    const healthHandler = () => {
+      setHealthArmed(true)
+      setHealthOpen(true)
+    }
     window.addEventListener('open-labs-offcanvas', labsHandler)
     window.addEventListener('open-wl-offcanvas', wlHandler)
     window.addEventListener('open-wegovy-assessment', wegovyHandler)
     window.addEventListener('open-hair-assessment', hairHandler)
+    window.addEventListener('open-sex-assessment', sexHandler)
+    window.addEventListener('open-testosterone-assessment', testosteroneHandler)
+    window.addEventListener('open-health-assessment', healthHandler)
     return () => {
       window.removeEventListener('open-labs-offcanvas', labsHandler)
       window.removeEventListener('open-wl-offcanvas', wlHandler)
       window.removeEventListener('open-wegovy-assessment', wegovyHandler)
       window.removeEventListener('open-hair-assessment', hairHandler)
+      window.removeEventListener('open-sex-assessment', sexHandler)
+      window.removeEventListener('open-testosterone-assessment', testosteroneHandler)
+      window.removeEventListener('open-health-assessment', healthHandler)
     }
   }, [])
 
@@ -116,6 +146,30 @@ const Layout = () => {
           <HairAssessment
             isOpen={hairOpen}
             onClose={() => setHairOpen(false)}
+          />
+        </Suspense>
+      )}
+      {sexArmed && (
+        <Suspense fallback={null}>
+          <SexAssessment
+            isOpen={sexOpen}
+            onClose={() => setSexOpen(false)}
+          />
+        </Suspense>
+      )}
+      {testosteroneArmed && (
+        <Suspense fallback={null}>
+          <TestosteroneAssessment
+            isOpen={testosteroneOpen}
+            onClose={() => setTestosteroneOpen(false)}
+          />
+        </Suspense>
+      )}
+      {healthArmed && (
+        <Suspense fallback={null}>
+          <HealthAssessment
+            isOpen={healthOpen}
+            onClose={() => setHealthOpen(false)}
           />
         </Suspense>
       )}

@@ -3,6 +3,15 @@ import Container from '@/components/common/Container/Container'
 import { heroFeaturedCards, heroCategoryCards } from '@/data/heroCards'
 import './Hero.scss'
 
+// Maps each category card slug to the window event that opens its assessment
+// modal (handled in Layout.jsx). Slugs without an entry navigate normally.
+const CATEGORY_ASSESSMENT_EVENTS = {
+  sex: 'open-sex-assessment',
+  hair: 'open-hair-assessment',
+  testosterone: 'open-testosterone-assessment',
+  health: 'open-health-assessment',
+}
+
 /**
  * Hero section — background-image cards:
  *
@@ -111,9 +120,10 @@ const Hero = () => {
               to={cat.href}
               className={`hero__cat-card hero__cat-card--${cat.slug}`}
               onClick={(e) => {
-                if (cat.slug === 'hair') {
+                const assessmentEvent = CATEGORY_ASSESSMENT_EVENTS[cat.slug]
+                if (assessmentEvent) {
                   e.preventDefault()
-                  window.dispatchEvent(new Event('open-hair-assessment'))
+                  window.dispatchEvent(new Event(assessmentEvent))
                 }
               }}
               style={{ '--hover-bg': cat.hoverBg }}
