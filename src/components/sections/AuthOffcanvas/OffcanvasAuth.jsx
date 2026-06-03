@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
+import useScrollLock from '@/hooks/useScrollLock'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import './AuthOffcanvas.scss'
@@ -20,10 +21,8 @@ const OffcanvasAuth = ({ isOpen, onClose, initialView = 'login' }) => {
     if (isOpen) setView(initialView)
   }, [isOpen, initialView])
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [isOpen])
+  // Lock background scroll while open (scrollbar-width compensated, no flicker).
+  useScrollLock(isOpen)
 
   const handleKey = useCallback((e) => {
     if (e.key === 'Escape') onClose()

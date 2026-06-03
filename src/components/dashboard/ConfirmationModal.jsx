@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react'
+import useScrollLock from '@/hooks/useScrollLock'
 
 /**
  * Reusable confirmation modal.
@@ -30,12 +31,13 @@ const ConfirmationModal = ({
     if (e.key === 'Escape' && onCancel) onCancel()
   }, [onCancel])
 
+  // Lock background scroll while open (scrollbar-width compensated, no flicker).
+  useScrollLock(isOpen)
+
   useEffect(() => {
     if (!isOpen) return
-    document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', handleKey)
     return () => {
-      document.body.style.overflow = ''
       document.removeEventListener('keydown', handleKey)
     }
   }, [isOpen, handleKey])

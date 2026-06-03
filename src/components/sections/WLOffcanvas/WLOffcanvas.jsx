@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useScrollLock from '@/hooks/useScrollLock'
 import './WLOffcanvas.scss'
 
 const exploreLinks = [
@@ -56,10 +57,8 @@ const WLOffcanvas = ({ isOpen, onClose, from }) => {
     }
   }
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [isOpen])
+  // Lock background scroll while open (scrollbar-width compensated, no flicker).
+  useScrollLock(isOpen)
 
   useEffect(() => {
     if (!isOpen) {

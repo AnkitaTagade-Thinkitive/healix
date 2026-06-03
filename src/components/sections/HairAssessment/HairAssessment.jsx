@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import hairAssessmentConfig from '@/config/hairAssessmentConfig'
+import useScrollLock from '@/hooks/useScrollLock'
 import AssessmentLoading from './AssessmentLoading'
 import AssessmentResult from './AssessmentResult'
 import './HairAssessment.scss'
@@ -191,23 +192,8 @@ const HairAssessment = ({ isOpen, onClose, config = hairAssessmentConfig, ariaLa
     return () => clearTimeout(id)
   }, [isOpen, status])
 
-  // Lock background scroll while the modal is open. Reserve the vanished
-  // scrollbar's width as body padding so removing the scrollbar doesn't
-  // reflow/shift the page sideways (the open flicker). Inline styles are
-  // captured and restored so we never clobber pre-existing values.
-  useEffect(() => {
-    if (!isOpen) return
-    const { body } = document
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
-    const prevOverflow = body.style.overflow
-    const prevPaddingRight = body.style.paddingRight
-    body.style.overflow = 'hidden'
-    if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`
-    return () => {
-      body.style.overflow = prevOverflow
-      body.style.paddingRight = prevPaddingRight
-    }
-  }, [isOpen])
+  // Lock background scroll while open (scrollbar-width compensated, no flicker).
+  useScrollLock(isOpen)
 
   const handleKey = useCallback((e) => {
     if (e.key === 'Escape') onClose()

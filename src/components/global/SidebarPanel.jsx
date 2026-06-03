@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import useScrollLock from '@/hooks/useScrollLock'
 
 /**
  * Global main-navigation sidebar.
@@ -201,10 +202,8 @@ const SidebarPanel = ({ seedMenu = 'main' }) => {
     }
   }, [isWeightLoss, applyExternalMenu])
 
-  useEffect(() => {
-    document.body.style.overflow = sidebarOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [sidebarOpen])
+  // Lock background scroll while open (scrollbar-width compensated, no flicker).
+  useScrollLock(sidebarOpen)
 
   // Close the sidebar (and any open panel) whenever the route actually
   // changes. This lets the layered navigation flow finish naturally:

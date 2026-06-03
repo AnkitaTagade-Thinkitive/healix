@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useScrollLock from '@/hooks/useScrollLock'
 import './LabsOffcanvas.scss'
 
 const exploreLinks = [
@@ -39,10 +40,8 @@ const LabsOffcanvas = ({ isOpen, onClose, from }) => {
     }
   }
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [isOpen])
+  // Lock background scroll while open (scrollbar-width compensated, no flicker).
+  useScrollLock(isOpen)
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') onClose()
